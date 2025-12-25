@@ -1,0 +1,44 @@
+:root {
+    --logo-red: #8A1204;
+    --logo-blue: #054D97;
+    
+    --white: #fff;
+
+    --dark-font: #181818;
+    --gray-font: #282828;
+    --light-font: #383838;
+    --inverse-font: #ffffff;
+
+    --blue: #043B74;
+    --red: #5A0C02;
+
+    --light-blue: #054D97;
+    --light-red: #B72410;
+
+    --darkest-blue: #02090F;
+    --darkest-red: #120201;
+
+    --lightest-blue: #A8C9F0;
+    --lightest-red: #F0B4AF;
+}
+
+@font-face {
+    font-family: "PlusJakartaSans";
+    src: url("../fonts/PlusJakartaSans.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: "SourceSans3";
+    src: url("../fonts/SourceSans3.ttf") format("truetype");
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: "PlusJakartaSans";
+    box-sizing: border-box;
+}
+
+a {
+    text-decoration: none;
+}
