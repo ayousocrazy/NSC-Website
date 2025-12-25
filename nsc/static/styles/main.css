@@ -42,3 +42,13 @@
 a {
     text-decoration: none;
 }
+
+.main-wrapper {
+    margin-top: 64px;
+}
+
+@media (max-width: 992px) {  
+    .main-wrapper {
+        margin-top: 112px;
+    }
+}

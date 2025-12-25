@@ -1,15 +1,21 @@
 .nav {
-    max-width: 1440px;
-    margin: 0 auto;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 64px;
+    z-index: 1001;
+    background: var(--white);
 }
 
 .header-container {
     position: relative;
-    z-index: 1001;
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 12px 24px;
+    max-width: 1440px;
+    margin: 0 auto;
 }
 
 .header-brand img {
@@ -105,7 +111,6 @@ body.menu-open .header_burger-button::after {
     transform: rotate(-45deg);
 }
 
-/* ------------------ RIGHT DRAWER ------------------ */
 .header_burger {
     position: fixed;
     inset: 0;
@@ -113,18 +118,34 @@ body.menu-open .header_burger-button::after {
     z-index: 1000;
 }
 
+.header_burger-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.3);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.35s ease;
+    z-index: 900;
+}
+
+.header_burger-overlay.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
 .header_burger-content {
     position: absolute;
-    top: 54px;                
+    top: 112px;                
     right: -300px;
     width: 80vw;
     max-width: 300px;
-    height: calc(100% - 54px);
+    height: calc(100% - 112px);
     background: var(--white);
     padding: 24px;
     display: flex;
     flex-direction: column;
     transition: right 0.35s ease;
+    z-index: 1000;
 }
 
 .header_burger.active {
@@ -135,7 +156,7 @@ body.menu-open .header_burger-button::after {
     right: 0;
 }
 
-/* ------------------ MOBILE MENU ------------------ */
+/* Mobile slider content  */
 .header_burger .header-nav-external {
     display: flex;
     flex-direction: column;
@@ -161,23 +182,20 @@ body.menu-open .header_burger-button::after {
     border-radius: 8px;
 }
 
-body.menu-open {
-    overflow: hidden;
-}
-
-.mobile-bottom-nav {
+/* Bottom nav  */
+.bottom-nav {
     display: flex;
     gap: 24px;
 }
 
-.mobile-bottom-nav .nav-item {
+.bottom-nav .nav-item {
     text-decoration: none;
     white-space: nowrap;
-    color: var(--blue);
-    font-weight: 500;
+    color: var(--dark-font);
+    font-weight: 600;
 }
 
-/* ------------------ RESPONSIVE ------------------ */
+/* Responsive  */
 @media (max-width: 992px) {
     .header-content {
         display: none;
@@ -188,19 +206,20 @@ body.menu-open {
     }
 
     .header-nav-internal {
+        position: fixed;   
+        top: 64px;          
+        left: 0;
+        right: 0;
+        height: 48px;       
+        z-index: 1001;
+        background: var(--white);
+
         overflow-x: auto;
         overflow-y: hidden;
         white-space: nowrap;
         scrollbar-width: none;         
         -ms-overflow-style: none;  
         cursor: grab;
-        mask-image: linear-gradient(
-            to right,
-            transparent,
-            black 10%,
-            black 90%,
-            transparent
-        );
     }
 
     .header-nav-internal::-webkit-scrollbar {
@@ -211,29 +230,35 @@ body.menu-open {
         cursor: grabbing;
     }
 
-    .mobile-bottom-nav {
-        position: static;
+    .bottom-nav {
+        display: flex;
+        position: sticky;  
+        top: 0;                
         padding: 8px 24px;
         background: var(--white);         
         border-radius: 0;            
         box-shadow: none;
-        min-width: max-content;  
+        min-width: max-content;
+
+        overflow-x: auto; 
+        white-space: nowrap; 
     }
 
-    .mobile-bottom-nav .nav-item {
+    .bottom-nav .nav-item {
+        display: inline-block; 
         font-size: 12px;          
         padding: 6px 0;      
         color: var(--light-font);
     }
 
-    .mobile-bottom-nav .nav-item.active {
+    .bottom-nav .nav-item.active {
         color: var(--blue);
         border-bottom: 2px solid var(--blue);
     }
 }
 
 @media (min-width: 992.1px) {
-    .mobile-bottom-nav {
+    .bottom-nav {
         position: fixed;
         bottom: 54px;
         left: 50%;
@@ -248,14 +273,18 @@ body.menu-open {
         box-shadow: 0 8px 25px rgba(0, 31, 63, 0.25);
     }
 
-    .mobile-bottom-nav .nav-item {
+    .bottom-nav .nav-item {
         font-size: 14px;
         padding: 8px 14px;
         border-radius: 999px;
     }
 
-    .mobile-bottom-nav .nav-item.active {
-        background: var(--blue);
+    .bottom-nav .nav-item.active {
+        background: linear-gradient(90deg, var(--blue), var(--red));
         color: var(--white);
     }
+}
+
+@media (max-width: 450px) {
+    
 }
