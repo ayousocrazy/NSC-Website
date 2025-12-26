@@ -12,6 +12,8 @@
     --blue: #043B74;
     --red: #5A0C02;
 
+    --sky-blue: #5AA3FF;
+
     --light-blue: #054D97;
     --light-red: #B72410;
 
@@ -20,6 +22,8 @@
 
     --lightest-blue: #A8C9F0;
     --lightest-red: #F0B4AF;
+
+    --black-bg: #101010;
 }
 
 @font-face {

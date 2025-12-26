@@ -268,7 +268,7 @@ body.menu-open .header_burger-button::after {
         padding: 6px;
         gap: 8px;
 
-        background: linear-gradient(90deg, var(--lightest-blue), var(--lightest-red));
+        background: linear-gradient(90deg, var(--lightest-blue), var(--white), var(--lightest-blue));
         border-radius: 999px;
         box-shadow: 0 8px 25px rgba(0, 31, 63, 0.25);
     }
@@ -280,11 +280,16 @@ body.menu-open .header_burger-button::after {
     }
 
     .bottom-nav .nav-item.active {
-        background: linear-gradient(90deg, var(--blue), var(--red));
+        background: var(--dark-font);
         color: var(--white);
     }
 }
 
-@media (max-width: 450px) {
-    
+@media (max-width: 500px) {
+    .header-container {
+        padding: 16px;
+    }
+    .bottom-nav {
+        padding: 8px 16px;
+    }
 }

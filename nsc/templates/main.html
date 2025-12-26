@@ -18,19 +18,11 @@
 </head>
 <body>
     {% include 'nav.html' %}
-    <div class="header-nav-internal">
-        <div class="bottom-nav">
-            <a href="#" class="nav-item active">Highlights</a>
-            <a href="#" class="nav-item">Placements</a>
-            <a href="#" class="nav-item">Curriculum</a>
-            <a href="#" class="nav-item">Instructors</a>
-            <a href="#" class="nav-item">NSET</a>
-        </div>
-    </div>
-    <main class="main-wrapper">
-    {% block content %}
 
-    {% endblock %}
+    {% block internal_nav %}{% endblock %}
+
+    <main class="main-wrapper">
+        {% block content %}{% endblock %}
     </main>
 </body>
 </html>

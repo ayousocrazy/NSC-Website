@@ -5,6 +5,54 @@
 <link rel="stylesheet" href="{% static 'styles/home.css' %}">
 {% endblock %}
 
+{% block internal_nav %}
+<div class="header-nav-internal">
+    <div class="bottom-nav">
+        <a href="#" class="nav-item active">Highlights</a>
+        <a href="#" class="nav-item">Placements</a>
+        <a href="#" class="nav-item">Curriculum</a>
+        <a href="#" class="nav-item">Instructors</a>
+        <a href="#" class="nav-item">NSET</a>
+    </div>
+</div>
+{% endblock %}
+
 {% block content %}
+
+<section>
+    <div class="section_100 banner-wrapper">
+        <div class="glow glow-left"></div>
+
+        <div class="banner-container">
+            <div class="intro-content">
+                <h1>
+                    <span id="highlight">Learners to Leaders</span><br />
+                    Creating Thinkers,<br />
+                    Doers, and Leaders
+                </h1>
+
+                <p class="subtitle">
+                    Education That Builds Confidence and Character<br />
+                    Beyond the Classroom
+                </p>
+
+                <div class="cta-buttons">
+                    <a href="#apply" class="btn btn-primary">Apply Now</a>
+                    <a href="https://heyzine.com/flip-book/80c29e7e1f.html" class="btn btn-secondary"
+                        target="_">Brochure</a>
+                </div>
+            </div>
+
+            <div class="intro-video">
+                <video autoplay muted loop playsinline>
+                    <source src="{% static 'videos/intro-video.mp4' %}" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+        </div>
+
+        <div class="glow glow-right"></div>
+    </div>
+</section>
 
 {% endblock %}
