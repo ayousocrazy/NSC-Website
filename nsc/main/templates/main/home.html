@@ -3,15 +3,17 @@
 
 {% block extra_css %}
 <link rel="stylesheet" href="{% static 'styles/home.css' %}">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
 {% endblock %}
 
 {% block internal_nav %}
 <div class="header-nav-internal">
     <div class="bottom-nav">
-        <a href="#" class="nav-item active">Highlights</a>
-        <a href="#" class="nav-item">Placements</a>
-        <a href="#" class="nav-item">Curriculum</a>
-        <a href="#" class="nav-item">Instructors</a>
+        <a href="#highlights" class="nav-item active">Highlights</a>
+        <a href="#partners" class="nav-item">Partners</a>
+        <a href="#tour" class="nav-item">Tour</a>
+        <a href="#faqs" class="nav-item">FAQs</a>
         <a href="#" class="nav-item">NSET</a>
     </div>
 </div>
@@ -23,7 +25,7 @@
     <div class="section_100 banner-wrapper">
         <div class="glow glow-left"></div>
 
-        <div class="banner-container">
+        <div class="section_1260 banner-container">
             <div class="intro-content">
                 <h1>
                     <span id="highlight">Learners to Leaders</span><br />
@@ -45,14 +47,80 @@
 
             <div class="intro-video">
                 <video autoplay muted loop playsinline>
-                    <source src="https://d2beiqkhq929f0.cloudfront.net/intro-video.mp4" type="video/mp4">
-                    Your browser does not support the video tag.
+                    <source src="{% static 'videos/nsc-intro.mp4' %}" type="video/mp4">
+                    Your browser does not support the video tag
                 </video>
             </div>
         </div>
 
         <div class="glow glow-right"></div>
     </div>
+
+    <div class="section_1260 features-card-container">
+        <div class="features-card">
+            <div class="features-icon">
+                <i class="fa-solid fa-building-columns"></i>
+            </div>
+            <h3>Established 2055 B.S.</h3>
+            <p>Over two decades of academic legacy</p>
+        </div>
+
+        <div class="features-card">
+            <div class="features-icon">
+                <i class="fa-solid fa-location-dot"></i>
+            </div>
+            <h3>Kathmandu Campus</h3>
+            <p>Located in New Baneshwor</p>
+        </div>
+
+        <div class="features-card">
+            <div class="features-icon">
+                <i class="fa-solid fa-certificate"></i>
+            </div>
+            <h3>TU Affiliated</h3>
+            <p>Bachelor’s programs under TU standards</p>
+        </div>
+
+        <div class="features-card">
+            <div class="features-icon">
+                <i class="fa-solid fa-layer-group"></i>
+            </div>
+            <h3>Multidisciplinary Degrees</h3>
+            <p>Science, IT, and Management programs</p>
+        </div>
+    </div>
 </section>
+
+<section id="partners">
+partners
+</section>
+
+<section id="tour">
+    tour
+</section>
+
+<section id="faqs">
+faqs
+</section>
+
+
+
+<!-- <div class="marquee-container">
+  <div class="marquee" id="marqueeTop">SCIENCE • MANAGEMENT • LAW • SCIENCE • MANAGEMENT • LAW • SCIENCE • MANAGEMENT • LAW • SCIENCE • MANAGEMENT • LAW •</div>
+</div>
+
+<div class="marquee-container">
+  <div class="marquee reverse" id="marqueeBottom">SCIENCE • MANAGEMENT • LAW • SCIENCE • MANAGEMENT • LAW • SCIENCE • MANAGEMENT • LAW • SCIENCE • MANAGEMENT • LAW •</div>
+</div> -->
+
+<!-- <script src="{% static 'js/marquee.js' %}"></script> -->
+
+<br><br><br><br><br>
+<br><br><br><br><br>
+<br><br><br><br><br>
+<br><br><br><br><br>
+<br><br><br><br><br>
+
+<script src="{% static 'js/bottom-nav.js' %}"></script>
 
 {% endblock %}

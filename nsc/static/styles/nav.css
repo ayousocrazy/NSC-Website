@@ -58,12 +58,6 @@
     display: inline-block;
 }
 
-.header-btn.primary {
-    background: var(--light-blue);
-    color: #fff;
-    border: none;
-}
-
 .header_burger-button {
     width: 24px;
     height: 16px;
@@ -196,7 +190,7 @@ body.menu-open .header_burger-button::after {
 }
 
 /* Responsive  */
-@media (max-width: 992px) {
+@media (max-width: 900px) {
     .header-content {
         display: none;
     }
@@ -257,7 +251,7 @@ body.menu-open .header_burger-button::after {
     }
 }
 
-@media (min-width: 992.1px) {
+@media (min-width: 900.1px) {
     .bottom-nav {
         position: fixed;
         bottom: 54px;

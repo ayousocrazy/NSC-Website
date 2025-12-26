@@ -43,6 +43,10 @@
     box-sizing: border-box;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 a {
     text-decoration: none;
 }
@@ -51,7 +55,11 @@ a {
     margin-top: 64px;
 }
 
-@media (max-width: 992px) {  
+section {
+    scroll-margin-top: 80px; 
+}
+
+@media (max-width: 900px) {  
     .main-wrapper {
         margin-top: 112px;
     }

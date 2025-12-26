@@ -12,9 +12,6 @@ def admissions(request):
 def alumini(request):
     return render(request, "main/alumini.html")
 
-def contact(request):
-    return render(request, "main/contact.html")
-
 def events(request):
     return render(request, "main/events.html")
 

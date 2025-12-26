@@ -1,69 +1,102 @@
 {% load static %}
 
 <header class="nav">
-    <div class="header-container">
-        <!-- Logo -->
-        <div class="header-brand">
-            <img src="{% static 'images/header-logo.png' %}" alt="NEW SUMMIT College" />
-        </div>
+  <div class="header-container">
+    <!-- Logo -->
+    <a href="#" class="header-brand">
+      <img
+        src="{% static 'images/header-logo.png' %}"
+        alt="NEW SUMMIT College"
+      />
+    </a>
 
-        <!-- Desktop Nav -->
-        <div class="header-content">
-            <div class="header-nav-external">
-                <a href="{% url 'home' %}"
-                    class="{% if request.resolver_match.url_name == 'home' %}active{% endif %}">Home</a>
-                <a href="{% url 'admissions' %}"
-                    class="{% if request.resolver_match.url_name == 'admissions' %}active{% endif %}">Admissions</a>
-                <a href="{% url 'academics' %}"
-                    class="{% if request.resolver_match.url_name == 'academics' %}active{% endif %}">Academics</a>
-                <a href="{% url 'alumini' %}"
-                    class="{% if request.resolver_match.url_name == 'alumini' %}active{% endif %}">Alumini</a>
-                <a href="{% url 'contact' %}"
-                    class="{% if request.resolver_match.url_name == 'contact' %}active{% endif %}">Contact</a>
-                <a href="{% url 'events' %}"
-                    class="{% if request.resolver_match.url_name == 'events' %}active{% endif %}">Events</a>
-                <a href="{% url 'faqs' %}"
-                    class="{% if request.resolver_match.url_name == 'faqs' %}active{% endif %}">FAQs</a>
-            </div>
+    <!-- Desktop Nav -->
+    <div class="header-content">
+      <div class="header-nav-external">
+        <a
+          href="{% url 'home' %}"
+          class="{% if request.resolver_match.url_name == 'home' %}active{% endif %}"
+          >Home</a
+        >
+        <a
+          href="{% url 'admissions' %}"
+          class="{% if request.resolver_match.url_name == 'admissions' %}active{% endif %}"
+          >Admissions</a
+        >
+        <a
+          href="{% url 'academics' %}"
+          class="{% if request.resolver_match.url_name == 'academics' %}active{% endif %}"
+          >Academics</a
+        >
+        <a
+          href="{% url 'alumini' %}"
+          class="{% if request.resolver_match.url_name == 'alumini' %}active{% endif %}"
+          >Alumini</a
+        >
+        <a
+          href="{% url 'events' %}"
+          class="{% if request.resolver_match.url_name == 'events' %}active{% endif %}"
+          >Events</a
+        >
+        <a
+          href="{% url 'faqs' %}"
+          class="{% if request.resolver_match.url_name == 'faqs' %}active{% endif %}"
+          >FAQs</a
+        >
+      </div>
 
-            <div class="desktop-buttons">
-                <a href="#"><span class="header-btn">Plus 2</span></a>
-                <a href="#"><span class="header-btn primary">Apply</span></a>
-            </div>
-        </div>
-
-        <!-- Burger Button -->
-        <div class="header_burger-button">
-            <span></span>
-        </div>
+      <div class="desktop-buttons">
+        <a href="#"><span class="header-btn">Plus 2</span></a>
+      </div>
     </div>
 
-    <!-- Drawer -->
-    <div class="header_burger">
-        <div class="header_burger-content">
-            <div class="header-nav-external">
-                <a href="{% url 'home' %}"
-                    class="{% if request.resolver_match.url_name == 'home' %}active{% endif %}">Home</a>
-                <a href="{% url 'admissions' %}"
-                    class="{% if request.resolver_match.url_name == 'admissions' %}active{% endif %}">Admissions</a>
-                <a href="{% url 'academics' %}"
-                    class="{% if request.resolver_match.url_name == 'academics' %}active{% endif %}">Academics</a>
-                <a href="{% url 'alumini' %}"
-                    class="{% if request.resolver_match.url_name == 'alumini' %}active{% endif %}">Alumini</a>
-                <a href="{% url 'contact' %}"
-                    class="{% if request.resolver_match.url_name == 'contact' %}active{% endif %}">Contact</a>
-                <a href="{% url 'events' %}"
-                    class="{% if request.resolver_match.url_name == 'events' %}active{% endif %}">Events</a>
-                <a href="{% url 'faqs' %}"
-                    class="{% if request.resolver_match.url_name == 'faqs' %}active{% endif %}">FAQs</a>
-            </div>
-
-            <div class="mobile-buttons">
-                <a href="#"><span class="header-btn">Plus 2</span></a>
-                <a href="#"><span class="header-btn primary">Apply Now</span></a>
-            </div>
-        </div>
+    <!-- Burger Button -->
+    <div class="header_burger-button">
+      <span></span>
     </div>
+  </div>
+
+  <!-- Drawer -->
+  <div class="header_burger">
+    <div class="header_burger-content">
+      <div class="header-nav-external">
+        <a
+          href="{% url 'home' %}"
+          class="{% if request.resolver_match.url_name == 'home' %}active{% endif %}"
+          >Home</a
+        >
+        <a
+          href="{% url 'admissions' %}"
+          class="{% if request.resolver_match.url_name == 'admissions' %}active{% endif %}"
+          >Admissions</a
+        >
+        <a
+          href="{% url 'academics' %}"
+          class="{% if request.resolver_match.url_name == 'academics' %}active{% endif %}"
+          >Academics</a
+        >
+        <a
+          href="{% url 'alumini' %}"
+          class="{% if request.resolver_match.url_name == 'alumini' %}active{% endif %}"
+          >Alumini</a
+        >
+        <a
+          href="{% url 'events' %}"
+          class="{% if request.resolver_match.url_name == 'events' %}active{% endif %}"
+          >Events</a
+        >
+        <a
+          href="{% url 'faqs' %}"
+          class="{% if request.resolver_match.url_name == 'faqs' %}active{% endif %}"
+          >FAQs</a
+        >
+      </div>
+
+      <div class="mobile-buttons">
+        <a href="#"><span class="header-btn">Plus 2</span></a>
+      </div>
+    </div>
+  </div>
 </header>
 
 <div class="header_burger-overlay"></div>
