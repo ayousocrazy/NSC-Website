@@ -1,12 +1,13 @@
 :root {
     --logo-red: #8A1204;
     --logo-blue: #054D97;
-    
+
     --white: #fff;
 
     --dark-font: #181818;
     --gray-font: #282828;
     --light-font: #383838;
+    --lightest-font: #666;
     --inverse-font: #ffffff;
 
     --blue: #043B74;
@@ -24,6 +25,7 @@
     --lightest-red: #F0B4AF;
 
     --black-bg: #101010;
+    --light-gray-bg: #f7f9fc;
 }
 
 @font-face {
@@ -56,10 +58,10 @@ a {
 }
 
 section {
-    scroll-margin-top: 80px; 
+    scroll-margin-top: 72px;
 }
 
-@media (max-width: 900px) {  
+@media (max-width: 900px) {
     .main-wrapper {
         margin-top: 112px;
     }

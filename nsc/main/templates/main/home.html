@@ -2,19 +2,28 @@
 {% load static %}
 
 {% block extra_css %}
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/pannellum/build/pannellum.css"
+/>
 <link rel="stylesheet" href="{% static 'styles/home.css' %}">
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+<style>
+    @media (max-width: 900px) {
+        section {
+            scroll-margin-top: 120px;
+        }
+    }
+</style>
 {% endblock %}
 
 {% block internal_nav %}
 <div class="header-nav-internal">
     <div class="bottom-nav">
-        <a href="#highlights" class="nav-item active">Highlights</a>
-        <a href="#partners" class="nav-item">Partners</a>
-        <a href="#tour" class="nav-item">Tour</a>
+        <a href="#partners" class="nav-item active">Industry Partners</a>
+        <a href="#tour" class="nav-item">Virtual Tour</a>
+        <a href="#programs" class="nav-item">Programs</a>
         <a href="#faqs" class="nav-item">FAQs</a>
-        <a href="#" class="nav-item">NSET</a>
     </div>
 </div>
 {% endblock %}
@@ -91,16 +100,65 @@
     </div>
 </section>
 
-<section id="partners">
-partners
+<section id="partners" class="section-m-b">
+    <div class="section_1260">
+        <h2 class="section-title">
+            Built Through Years <br />
+            of Academic Excellence
+        </h2>
+
+        <div class="partners-container">
+            <h3 class="partners-title">Our Industry Partners</h3>
+            <p class="partners-subtitle">
+                Building strong industry connections to enhance opportunities
+            </p>
+
+            <div class="partners-logos">
+                <img src="https://nsc-back.onrender.com/uploads/image-1713688494933-529226553.png" alt="Partner 1">
+                <img src="https://nsc-back.onrender.com/uploads/image-1713689010648-144412850.png" alt="Partner 2">
+                <img src="https://nsc-back.onrender.com/uploads/image-1713688814361-265774075.png" alt="Partner 3">
+                <img src="https://nsc-back.onrender.com/uploads/image-1713688626679-876331155.png" alt="Partner 4">
+                <img src="https://nsc-back.onrender.com/uploads/image-1713688529858-814094774.png" alt="Partner 5">
+                <img src="https://nsc-back.onrender.com/uploads/image-1713688515371-721989507.jpg" alt="Partner 6">
+            </div>
+
+            <div class="partners-stats">
+                <div class="stat-box">
+                    <p class="stat-label">Industry Partners</p>
+                    <h4 class="stat-value">50+</h4>
+                </div>
+
+                <div class="stat-box">
+                    <p class="stat-label">MoUs Signed</p>
+                    <h4 class="stat-value">25+</h4>
+                </div>
+
+                <div class="stat-box">
+                    <p class="stat-label">Internship Support</p>
+                    <h4 class="stat-value">100%</h4>
+                </div>
+
+                <div class="stat-box">
+                    <p class="stat-label">Placement Assistance</p>
+                    <h4 class="stat-value">90%</h4>
+                </div>
+            </div>
+
+        </div>
+    </div>
 </section>
 
-<section id="tour">
-    tour
-</section>
-
-<section id="faqs">
-faqs
+<section id="tour" class="section-m-b">
+    <div class="section_1260">
+        <h4 class="section-subtitle">
+            Experience NSC
+        </h4>
+        <h2 class="section-title">
+            Take a Walk Through Our Campus
+        </h2>
+        <div id="panorama">
+        </div>
+    </div>
 </section>
 
 
@@ -121,6 +179,36 @@ faqs
 <br><br><br><br><br>
 <br><br><br><br><br>
 
-<script src="{% static 'js/bottom-nav.js' %}"></script>
+<script>
+    const PANORAMAS = {
+        mainGround: "{% static 'images/pov/main-ground.jpg' %}",
+        lobby: "{% static 'images/pov/lobby.jpg' %}",
+        pathway1: "{% static 'images/pov/pathway-1.jpg' %}",
+        studyRoom: "{% static 'images/pov/study-room.jpg' %}",
+        greenRoom: "{% static 'images/pov/green-room.jpg' %}",
+        stairs: "{% static 'images/pov/stairs.jpg' %}",
+        balconyView: "{% static 'images/pov/balcony-view.jpg' %}",
+        corridor1A: "{% static 'images/pov/corridor-1A.jpg' %}",
+        corridor1B: "{% static 'images/pov/corridor-1B.jpg' %}",
+        corridor2: "{% static 'images/pov/corridor-2.jpg' %}",
+        corridor3: "{% static 'images/pov/corridor-3.jpg' %}",
+        corridor4: "{% static 'images/pov/corridor-4.jpg' %}",
+        floor2: "{% static 'images/pov/floor-2.jpg' %}",
+        floor3: "{% static 'images/pov/floor-3.jpg' %}",
+        floor4: "{% static 'images/pov/floor-4.jpg' %}",
+        room102: "{% static 'images/pov/102.jpg' %}",
+        room105: "{% static 'images/pov/105.jpg' %}",
+        room203: "{% static 'images/pov/203.jpg' %}",
+        room301: "{% static 'images/pov/301.jpg' %}",
+        room303: "{% static 'images/pov/303.jpg' %}",
+        room402: "{% static 'images/pov/402.jpg' %}",
+        cafeteria: "{% static 'images/pov/cafeteria.jpg' %}",
+    };
+</script>
 
+<script src="{% static 'js/bottom-nav.js' %}"></script>
+<script src="https://cdn.jsdelivr.net/npm/pannellum/build/pannellum.js"></script>
+<script src="{% static 'js/panorama.js' %}"></script>
+
+<!-- "{% static 'images/pov/' %}" -->
 {% endblock %}
