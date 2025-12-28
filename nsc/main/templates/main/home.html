@@ -1,12 +1,6 @@
-{% extends 'main.html' %}
-{% load static %}
-
-{% block extra_css %}
-<link
-  rel="stylesheet"
-  href="https://cdn.jsdelivr.net/npm/pannellum/build/pannellum.css"
-/>
-<link rel="stylesheet" href="{% static 'styles/home.css' %}">
+{% extends 'main.html' %} {% load static %} {% block extra_css %}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pannellum/build/pannellum.css" />
+<link rel="stylesheet" href="{% static 'styles/home.css' %}" />
 
 <style>
     @media (max-width: 900px) {
@@ -15,9 +9,7 @@
         }
     }
 </style>
-{% endblock %}
-
-{% block internal_nav %}
+{% endblock %} {% block internal_nav %}
 <div class="header-nav-internal">
     <div class="bottom-nav">
         <a href="#partners" class="nav-item active">Industry Partners</a>
@@ -26,9 +18,7 @@
         <a href="#faqs" class="nav-item">FAQs</a>
     </div>
 </div>
-{% endblock %}
-
-{% block content %}
+{% endblock %} {% block content %}
 
 <section>
     <div class="section_100 banner-wrapper">
@@ -56,7 +46,7 @@
 
             <div class="intro-video">
                 <video autoplay muted loop playsinline>
-                    <source src="{% static 'videos/nsc-intro.mp4' %}" type="video/mp4">
+                    <source src="{% static 'videos/nsc-intro.mp4' %}" type="video/mp4" />
                     Your browser does not support the video tag
                 </video>
             </div>
@@ -114,12 +104,12 @@
             </p>
 
             <div class="partners-logos">
-                <img src="https://nsc-back.onrender.com/uploads/image-1713688494933-529226553.png" alt="Partner 1">
-                <img src="https://nsc-back.onrender.com/uploads/image-1713689010648-144412850.png" alt="Partner 2">
-                <img src="https://nsc-back.onrender.com/uploads/image-1713688814361-265774075.png" alt="Partner 3">
-                <img src="https://nsc-back.onrender.com/uploads/image-1713688626679-876331155.png" alt="Partner 4">
-                <img src="https://nsc-back.onrender.com/uploads/image-1713688529858-814094774.png" alt="Partner 5">
-                <img src="https://nsc-back.onrender.com/uploads/image-1713688515371-721989507.jpg" alt="Partner 6">
+                <img src="https://nsc-back.onrender.com/uploads/image-1713688494933-529226553.png" alt="Partner 1" />
+                <img src="https://nsc-back.onrender.com/uploads/image-1713689010648-144412850.png" alt="Partner 2" />
+                <img src="https://nsc-back.onrender.com/uploads/image-1713688814361-265774075.png" alt="Partner 3" />
+                <img src="https://nsc-back.onrender.com/uploads/image-1713688626679-876331155.png" alt="Partner 4" />
+                <img src="https://nsc-back.onrender.com/uploads/image-1713688529858-814094774.png" alt="Partner 5" />
+                <img src="https://nsc-back.onrender.com/uploads/image-1713688515371-721989507.jpg" alt="Partner 6" />
             </div>
 
             <div class="partners-stats">
@@ -143,25 +133,79 @@
                     <h4 class="stat-value">90%</h4>
                 </div>
             </div>
-
         </div>
     </div>
 </section>
 
 <section id="tour" class="section-m-b">
     <div class="section_1260">
-        <h4 class="section-subtitle">
-            Experience NSC
-        </h4>
-        <h2 class="section-title">
-            Take a Walk Through Our Campus
-        </h2>
-        <div id="panorama">
+        <h4 class="section-subtitle">Experience NSC</h4>
+        <h2 class="section-title">Take a Walk Through Our Campus</h2>
+        <div class="panorama-wrapper">
+            <div class="tour-nav">
+                <div class="tour-nav-inner">
+                    <button data-scene="mainGround">Main Ground</button>
+                    <button data-scene="studyRoom">Study Room</button>
+                    <button data-scene="greenRoom">Green Room</button>
+                    <button data-scene="cafeteria">Cafeteria</button>
+                    <button data-scene="balconyView">Balcony View</button>
+                    <button data-scene="floor2">Floor 2</button>
+                    <button data-scene="floor3">Floor 3</button>
+                    <button data-scene="floor4">Floor 4</button>
+                </div>
+            </div>
+
+            <div id="panorama"></div>
         </div>
     </div>
 </section>
+<section id="programs">
+    <div class="programs-container section_1260">
+        <!-- PROGRAM MENU -->
+        <div class="program-menu">
+            {% for program in programs %}
+            <button class="program {% if program.program_key == 'csit' %}active{% endif %}"
+                data-program="{{ program.program_key }}">
+                <span class="program-number">{{ forloop.counter }}</span> {{ program.program_key.upper }}
+            </button>
+            {% endfor %}
+        </div>
 
+        <!-- CONTENT -->
+        <div class="program-content" id="program-content">
+            <h2 id="program-title">{{ default_program.title }}</h2>
 
+            <div class="program-description">
+                <div class="program-section flex-row">
+                    <div class="program-image">
+                        <img src="{{ default_program.image1.url }}" alt="{{ default_program.title }}" />
+                    </div>
+                    <div class="program-text">
+                        <div class="info-item">
+                            <span class="label">What?</span> {{ default_program.what }}
+                        </div>
+                        <div class="info-item">
+                            <span class="label">How?</span> {{ default_program.how }}
+                        </div>
+                        <div class="info-item">
+                            <span class="label">Why?</span> {{ default_program.why }}
+                        </div>
+                    </div>
+                </div>
+                <div class="program-section reverse">
+                    <div class="program-text">{{ default_program.description }}</div>
+                    <div class="program-image">
+                        <img src="{{ default_program.image2.url }}" alt="{{ default_program.title }}" />
+                    </div>
+                </div>
+            </div>
+
+            <div class="learn-more" onclick="window.location.href='{{ default_program.link }}'">
+                Learn More →
+            </div>
+        </div>
+    </div>
+</section>
 
 <!-- <div class="marquee-container">
   <div class="marquee" id="marqueeTop">SCIENCE • MANAGEMENT • LAW • SCIENCE • MANAGEMENT • LAW • SCIENCE • MANAGEMENT • LAW • SCIENCE • MANAGEMENT • LAW •</div>
@@ -173,11 +217,13 @@
 
 <!-- <script src="{% static 'js/marquee.js' %}"></script> -->
 
-<br><br><br><br><br>
-<br><br><br><br><br>
-<br><br><br><br><br>
-<br><br><br><br><br>
-<br><br><br><br><br>
+<br /><br /><br /><br /><br />
+<br /><br /><br /><br /><br />
+<br /><br /><br /><br /><br />
+<br /><br /><br /><br /><br />
+<br /><br /><br /><br /><br />
+
+<script src="https://cdn.jsdelivr.net/npm/pannellum/build/pannellum.js"></script>
 
 <script>
     const PANORAMAS = {
@@ -204,11 +250,26 @@
         room402: "{% static 'images/pov/402.jpg' %}",
         cafeteria: "{% static 'images/pov/cafeteria.jpg' %}",
     };
+
+    const programsData = {
+  {% for p in programs %}
+    "{{ p.program_key }}": {
+        "title": "{{ p.title|escapejs }}",
+            "what": "{{ p.what|escapejs }}",
+                "how": "{{ p.how|escapejs }}",
+                    "why": "{{ p.why|escapejs }}",
+                        "description": "{{ p.description|escapejs }}",
+                            "image1": "{{ p.image1.url }}",
+                                "image2": "{{ p.image2.url }}",
+                                    "link": "{% url 'academics' p.program_key %}"
+    } {% if not forloop.last %}, {% endif %}
+    {% endfor %}
+  };
 </script>
 
 <script src="{% static 'js/bottom-nav.js' %}"></script>
-<script src="https://cdn.jsdelivr.net/npm/pannellum/build/pannellum.js"></script>
-<script src="{% static 'js/panorama.js' %}"></script>
+<script src="{% static 'js/panorama.js' %}?v=2"></script>
+<script src="{% static 'js/program.js' %}?v=2"></script>
 
 <!-- "{% static 'images/pov/' %}" -->
 {% endblock %}

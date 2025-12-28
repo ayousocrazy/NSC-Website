@@ -1,9 +1,10 @@
-pannellum.viewer('panorama', {
-    default: {
-        firstScene: "mainGround",
-        sceneFadeDuration: 1000
-    },
-    scenes: {
+const viewer = pannellum.viewer('panorama', {
+  default: {
+    firstScene: "mainGround",
+    autoLoad: true,
+    sceneFadeDuration: 1000
+  },
+  scenes: {
         "mainGround": {
             title: "Main Ground",
             type: "equirectangular",
@@ -43,7 +44,14 @@ pannellum.viewer('panorama', {
                     type: "scene",
                     text: "Stairs",
                     sceneId: "stairs"
-                }
+                },
+                {
+                    pitch: -5,
+                    yaw: 70,
+                    type: "scene",
+                    text: "Green Room",
+                    sceneId: "greenRoom"
+                },
             ]
         },
         "pathway1": {
@@ -88,10 +96,10 @@ pannellum.viewer('panorama', {
             hotSpots: [
                 {
                     pitch: 0,
-                    yaw: 180,
+                    yaw: -145,
                     type: "scene",
-                    text: "Main Ground",
-                    sceneId: "main-ground"
+                    text: "Lobby",
+                    sceneId: "lobby"
                 }
             ]
         },
@@ -475,3 +483,28 @@ pannellum.viewer('panorama', {
         },
     }
 });
+const navButtons = document.querySelectorAll('.tour-nav button');
+
+function setActiveButton(sceneId) {
+  navButtons.forEach(btn => {
+    btn.classList.toggle('active', btn.dataset.scene === sceneId);
+  });
+}
+
+navButtons.forEach(btn => {
+  btn.addEventListener('click', () => {
+    const sceneId = btn.dataset.scene;
+    viewer.loadScene(sceneId);
+    setActiveButton(sceneId);
+  });
+});
+
+viewer.on('scenechange', sceneId => {
+  setActiveButton(sceneId);
+});
+
+viewer.on('load', () => {
+  const initialScene = viewer.getScene(); 
+  setActiveButton(initialScene);
+});
+

@@ -12,7 +12,7 @@ SECRET_KEY = 'django-insecure-y7iog--uz2%tyo-%g^&)ls&izy7tk1y6v!b1(#xfrq3nj36=$v
 DEBUG = os.environ.get("DEBUG") == "True"
 
 ALLOWED_HOSTS = [
-    'nsc-backend.onrender.com', '*'
+    'nsc.onrender.com', '*'
 ]
 
 CSRF_TRUSTED_ORIGINS = [
@@ -33,7 +33,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware',
+    # 'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -63,16 +63,37 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'nsc.wsgi.application'
 
-DATABASES = {
-    'default': dj_database_url.config(
-        default=os.environ.get("DATABASE_URL"),
-        conn_max_age=600,
-    )
-}
+PRODUCTION = os.environ.get("PRODUCTION") == "True"
 
-DATABASES['default']['OPTIONS'] = {
-    'sslmode': 'require'
-}
+if PRODUCTION:
+    DATABASES = {
+        'default': dj_database_url.config(
+            default=os.environ.get("DATABASE_URL"),
+            conn_max_age=600,
+        )
+    }
+
+    DATABASES['default']['OPTIONS'] = {
+        'sslmode': 'require'
+    }
+else:
+    DATABASES = {
+    "default": {
+        "ENGINE": "django.db.backends.sqlite3",
+        "NAME": BASE_DIR / "db.sqlite3",
+        }
+    }
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': os.environ.get("NAME"),
+#         'USER': os.environ.get("USER"),
+#         'PASSWORD': os.environ.get("PASSWORD"),
+#         'HOST': os.environ.get("HOST"),
+#         'PORT': os.environ.get("PORT"),
+#     }
+# }
 
 AUTH_PASSWORD_VALIDATORS = [
     {
@@ -104,11 +125,11 @@ STATICFILES_DIRS = [
     BASE_DIR / 'static',
 ]
 
-STATIC_ROOT = BASE_DIR / 'staticfiles'
+# STATIC_ROOT = BASE_DIR / 'staticfiles'
 
 MEDIA_ROOT = BASE_DIR / 'media'
 
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+# STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'

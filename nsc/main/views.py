@@ -1,7 +1,22 @@
 from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
+from .models import *
 
 def home(request):
-    return render(request, "main/home.html")
+    programs = Academics.objects.all()
+    default_program = Academics.objects.filter(program_key="csit").first()
+
+    context = {
+        "programs": programs,      
+        "default_program": default_program 
+    }
+    return render(request, "main/home.html", context)
+
+def plus2Home(request):
+    context = {
+        "plus2": True
+    }
+    return render(request, "main/home.html", context)
 
 def academics(request):
     return render(request, "main/academics.html")

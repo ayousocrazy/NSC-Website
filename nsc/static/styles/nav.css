@@ -262,7 +262,7 @@ body.menu-open .header_burger-button::after {
         padding: 6px;
         gap: 8px;
 
-        background: linear-gradient(90deg, var(--lightest-blue), var(--white), var(--lightest-blue));
+        background: linear-gradient(90deg, var(--white), var(--lightest-blue));
         border-radius: 999px;
         box-shadow: 0 8px 25px rgba(0, 31, 63, 0.25);
     }

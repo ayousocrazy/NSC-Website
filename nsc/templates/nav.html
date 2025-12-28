@@ -24,7 +24,7 @@
           >Admissions</a
         >
         <a
-          href="{% url 'academics' %}"
+          href="#"
           class="{% if request.resolver_match.url_name == 'academics' %}active{% endif %}"
           >Academics</a
         >
@@ -46,7 +46,11 @@
       </div>
 
       <div class="desktop-buttons">
-        <a href="#"><span class="header-btn">Plus 2</span></a>
+        {% if plus2 %}
+        <a href="{% url 'home' %}"><span class="header-btn">Bachelors</span></a>
+        {% else %}
+        <a href="{% url 'plus2' %}"><span class="header-btn">Plus 2</span></a>
+        {% endif %}
       </div>
     </div>
 
@@ -71,7 +75,7 @@
           >Admissions</a
         >
         <a
-          href="{% url 'academics' %}"
+          href="#"
           class="{% if request.resolver_match.url_name == 'academics' %}active{% endif %}"
           >Academics</a
         >
@@ -93,7 +97,11 @@
       </div>
 
       <div class="mobile-buttons">
-        <a href="#"><span class="header-btn">Plus 2</span></a>
+        {% if plus2 %}
+        <a href="{% url 'home' %}"><span class="header-btn">Bachelors</span></a>
+        {% else %}
+        <a href="{% url 'plus2' %}"><span class="header-btn">Plus 2</span></a>
+        {% endif %}
       </div>
     </div>
   </div>
