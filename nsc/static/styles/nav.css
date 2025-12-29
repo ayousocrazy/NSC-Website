@@ -58,6 +58,11 @@
     display: inline-block;
 }
 
+.header-btn.active {
+    background: var(--light-blue);
+    color: var(--inverse-font);
+}
+
 .header_burger-button {
     width: 24px;
     height: 16px;

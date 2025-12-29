@@ -13,8 +13,8 @@
 <div class="header-nav-internal">
     <div class="bottom-nav">
         <a href="#partners" class="nav-item active">Industry Partners</a>
-        <a href="#tour" class="nav-item">Virtual Tour</a>
         <a href="#programs" class="nav-item">Programs</a>
+        <a href="#tour" class="nav-item">Virtual Tour</a>
         <a href="#faqs" class="nav-item">FAQs</a>
     </div>
 </div>
@@ -76,16 +76,26 @@
             <div class="features-icon">
                 <i class="fa-solid fa-certificate"></i>
             </div>
+            {% if plus2 %}
+            <h3>NEB Based</h3>
+            <p>Plus2’s programs under NEB standards</p>
+            {% else %}
             <h3>TU Affiliated</h3>
             <p>Bachelor’s programs under TU standards</p>
+            {% endif %}
         </div>
 
         <div class="features-card">
             <div class="features-icon">
                 <i class="fa-solid fa-layer-group"></i>
             </div>
+            {% if plus2 %}
+            <h3>Multidisciplinary Programs</h3>
+            <p>Science, Management, and Law programs</p>
+            {% else %}
             <h3>Multidisciplinary Degrees</h3>
             <p>Science, IT, and Management programs</p>
+            {% endif %}
         </div>
     </div>
 </section>
@@ -137,6 +147,60 @@
     </div>
 </section>
 
+
+<section id="programs" class="section-m-b">
+    <div class="section_1260">
+        <h4 class="section-subtitle">Explore our programs that align with your aspirations</h4>
+        <h2 class="section-title">Learn, Apply, and Excel in Your Chosen Field</h2>
+        <div class="programs-container">
+
+            <div class="program-menu">
+                {% for program in programs %}
+                <button class="program {% if plus2 %}{% if program.program_key == 'science' %}active{% endif %}{% else %}{% if program.program_key == 'csit' %}active{% endif %}{% endif %}"
+                    data-program="{{ program.program_key }}">
+                    <span class="program-number">{{ forloop.counter }}</span> {{ program.program_key.upper }}
+                </button>
+                {% endfor %}
+            </div>
+    
+            <div class="program-content" id="program-content">
+                <h2 id="program-title">{{ default_program.title }}</h2>
+    
+                <div class="program-description">
+                    {% if not plus2 %}
+                    <div class="program-section">
+                        <div class="program-image">
+                            <img src="{{ default_program.image1.url }}" alt="{{ default_program.title }}" />
+                        </div>
+                        <div class="program-text">
+                            <div class="info-item">
+                                <span class="label">What?</span> {{ default_program.what }}
+                            </div>
+                            <div class="info-item">
+                                <span class="label">How?</span> {{ default_program.how }}
+                            </div>
+                            <div class="info-item">
+                                <span class="label">Why?</span> {{ default_program.why }}
+                            </div>
+                        </div>
+                    </div>
+                    {% endif %}
+                    <div class="program-section reverse">
+                        <div class="program-text">{{ default_program.description }}</div>
+                        <div class="program-image">
+                            <img src="{% if plus2 %}{{ default_program.image1.url }}{% else %}{{ default_program.image2.url }}{% endif %}" alt="{{ default_program.title }}" />
+                        </div>
+                    </div>
+                </div>
+    
+                <div class="learn-more" onclick="window.location.href='{{ default_program.link }}'">
+                    Learn More →
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
 <section id="tour" class="section-m-b">
     <div class="section_1260">
         <h4 class="section-subtitle">Experience NSC</h4>
@@ -145,64 +209,16 @@
             <div class="tour-nav">
                 <div class="tour-nav-inner">
                     <button data-scene="mainGround">Main Ground</button>
+                    <button data-scene="seminarHall">Seminar Hall</button>
                     <button data-scene="studyRoom">Study Room</button>
+                    <button data-scene="compLab">Computer Lab</button>
                     <button data-scene="greenRoom">Green Room</button>
                     <button data-scene="cafeteria">Cafeteria</button>
                     <button data-scene="balconyView">Balcony View</button>
-                    <button data-scene="floor2">Floor 2</button>
-                    <button data-scene="floor3">Floor 3</button>
-                    <button data-scene="floor4">Floor 4</button>
                 </div>
             </div>
 
             <div id="panorama"></div>
-        </div>
-    </div>
-</section>
-<section id="programs">
-    <div class="programs-container section_1260">
-        <!-- PROGRAM MENU -->
-        <div class="program-menu">
-            {% for program in programs %}
-            <button class="program {% if program.program_key == 'csit' %}active{% endif %}"
-                data-program="{{ program.program_key }}">
-                <span class="program-number">{{ forloop.counter }}</span> {{ program.program_key.upper }}
-            </button>
-            {% endfor %}
-        </div>
-
-        <!-- CONTENT -->
-        <div class="program-content" id="program-content">
-            <h2 id="program-title">{{ default_program.title }}</h2>
-
-            <div class="program-description">
-                <div class="program-section flex-row">
-                    <div class="program-image">
-                        <img src="{{ default_program.image1.url }}" alt="{{ default_program.title }}" />
-                    </div>
-                    <div class="program-text">
-                        <div class="info-item">
-                            <span class="label">What?</span> {{ default_program.what }}
-                        </div>
-                        <div class="info-item">
-                            <span class="label">How?</span> {{ default_program.how }}
-                        </div>
-                        <div class="info-item">
-                            <span class="label">Why?</span> {{ default_program.why }}
-                        </div>
-                    </div>
-                </div>
-                <div class="program-section reverse">
-                    <div class="program-text">{{ default_program.description }}</div>
-                    <div class="program-image">
-                        <img src="{{ default_program.image2.url }}" alt="{{ default_program.title }}" />
-                    </div>
-                </div>
-            </div>
-
-            <div class="learn-more" onclick="window.location.href='{{ default_program.link }}'">
-                Learn More →
-            </div>
         </div>
     </div>
 </section>
@@ -232,6 +248,8 @@
         pathway1: "{% static 'images/pov/pathway-1.jpg' %}",
         studyRoom: "{% static 'images/pov/study-room.jpg' %}",
         greenRoom: "{% static 'images/pov/green-room.jpg' %}",
+        compLab: "{% static 'images/pov/comp-lab.jpg' %}",
+        seminarHall: "{% static 'images/pov/seminar-hall.jpg' %}",
         stairs: "{% static 'images/pov/stairs.jpg' %}",
         balconyView: "{% static 'images/pov/balcony-view.jpg' %}",
         corridor1A: "{% static 'images/pov/corridor-1A.jpg' %}",
@@ -251,20 +269,24 @@
         cafeteria: "{% static 'images/pov/cafeteria.jpg' %}",
     };
 
+    const isPlus2 = {{ plus2|default_if_none:False|yesno:"true,false" }};
+
     const programsData = {
-  {% for p in programs %}
-    "{{ p.program_key }}": {
-        "title": "{{ p.title|escapejs }}",
-            "what": "{{ p.what|escapejs }}",
-                "how": "{{ p.how|escapejs }}",
-                    "why": "{{ p.why|escapejs }}",
-                        "description": "{{ p.description|escapejs }}",
-                            "image1": "{{ p.image1.url }}",
-                                "image2": "{{ p.image2.url }}",
-                                    "link": "{% url 'academics' p.program_key %}"
-    } {% if not forloop.last %}, {% endif %}
-    {% endfor %}
-  };
+        {% for p in programs %}
+            "{{ p.program_key }}": {
+                title: "{{ p.title|escapejs }}",
+                description: "{{ p.description|escapejs }}",
+                image1: "{{ p.image1.url }}",
+                {% if not plus2 %}
+                    what: "{{ p.what|escapejs }}",
+                    how: "{{ p.how|escapejs }}",
+                    why: "{{ p.why|escapejs }}",
+                    image2: "{{ p.image2.url }}",
+                {% endif %}
+                link: "{% url 'academics' p.program_key %}"
+        }{% if not forloop.last %}, {% endif %}
+        {% endfor %}
+    };
 </script>
 
 <script src="{% static 'js/bottom-nav.js' %}"></script>

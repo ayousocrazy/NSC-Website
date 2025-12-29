@@ -15,7 +15,7 @@
       <div class="header-nav-external">
         <a
           href="{% url 'home' %}"
-          class="{% if request.resolver_match.url_name == 'home' %}active{% endif %}"
+          class="{% if request.resolver_match.url_name in 'home plus2' %}active{% endif %}"
           >Home</a
         >
         <a
@@ -47,7 +47,7 @@
 
       <div class="desktop-buttons">
         {% if plus2 %}
-        <a href="{% url 'home' %}"><span class="header-btn">Bachelors</span></a>
+        <a href="{% url 'home' %}"><span class="header-btn active">Bachelors</span></a>
         {% else %}
         <a href="{% url 'plus2' %}"><span class="header-btn">Plus 2</span></a>
         {% endif %}
@@ -98,7 +98,7 @@
 
       <div class="mobile-buttons">
         {% if plus2 %}
-        <a href="{% url 'home' %}"><span class="header-btn">Bachelors</span></a>
+        <a href="{% url 'home' %}"><span class="header-btn active">Bachelors</span></a>
         {% else %}
         <a href="{% url 'plus2' %}"><span class="header-btn">Plus 2</span></a>
         {% endif %}

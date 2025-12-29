@@ -23,6 +23,13 @@ const viewer = pannellum.viewer('panorama', {
                     type: "scene",
                     text: "Pathway 1",
                     sceneId: "pathway1"
+                },
+                {
+                    pitch: 0,
+                    yaw: 55,
+                    type: "scene",
+                    text: "Seminar Hall",
+                    sceneId: "seminarHall"
                 }
             ]
         },
@@ -72,6 +79,27 @@ const viewer = pannellum.viewer('panorama', {
                     type: "scene",
                     text: "Main Ground",
                     sceneId: "mainGround"
+                },
+                {
+                    pitch: -5,
+                    yaw: -60,
+                    type: "scene",
+                    text: "Seminar Hall",
+                    sceneId: "seminarHall"
+                }
+            ]
+        },
+        "seminarHall": {
+            title: "Seminar Hall",
+            type: "equirectangular",
+            panorama: PANORAMAS.seminarHall,
+            hotSpots: [
+                {
+                    pitch: 0,
+                    yaw: -25,
+                    type: "scene",
+                    text: "Pathway",
+                    sceneId: "pathway1"
                 }
             ]
         },
@@ -166,6 +194,20 @@ const viewer = pannellum.viewer('panorama', {
                 }
             ]
         },
+        "compLab": {
+            title: "Computer Lab",
+            type: "equirectangular",
+            panorama: PANORAMAS.compLab,
+            hotSpots: [
+                {
+                    pitch: 0,
+                    yaw: 50,
+                    type: "scene",
+                    text: "Floor 1 Corridor",
+                    sceneId: "corridor1B"
+                }
+            ]
+        },
         "corridor1A": {
             title: "Floor 1 Corridor Right",
             type: "equirectangular",
@@ -226,6 +268,13 @@ const viewer = pannellum.viewer('panorama', {
                     type: "scene",
                     text: "Room 102",
                     sceneId: "room102"
+                },
+                {
+                    pitch: -5,
+                    yaw: 3,
+                    type: "scene",
+                    text: "Computer Lab",
+                    sceneId: "compLab"
                 }
             ]
         },

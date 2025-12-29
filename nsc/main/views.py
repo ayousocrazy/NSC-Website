@@ -12,9 +12,14 @@ def home(request):
     }
     return render(request, "main/home.html", context)
 
-def plus2Home(request):
+def homePlus2(request):
+    programs = AcademicsPlus2.objects.all()
+    default_program = AcademicsPlus2.objects.filter(program_key="science").first()
+
     context = {
-        "plus2": True
+        "plus2": True,
+        "programs": programs,      
+        "default_program": default_program 
     }
     return render(request, "main/home.html", context)
 

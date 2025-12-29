@@ -25,3 +25,21 @@ class Academics(models.Model):
 
     def get_absolute_url(self):
         return reverse('academics', kwargs={'pk': self.program_key})
+    
+class AcademicsPlus2(models.Model):
+    PROGRAM_CHOICES = [
+        ('science', 'Science'),
+        ('management', 'Management'),
+        ('law', 'Law'),
+    ]
+
+    program_key = models.CharField(max_length=10, choices=PROGRAM_CHOICES, unique=True)
+    title = models.CharField(max_length=150)
+    description = models.TextField()
+    image1 = models.ImageField(upload_to='academics')
+
+    def __str__(self):
+        return self.title
+
+    def get_absolute_url(self):
+        return reverse('academics', kwargs={'pk': self.program_key})

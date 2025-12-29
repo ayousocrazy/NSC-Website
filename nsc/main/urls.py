@@ -9,5 +9,5 @@ urlpatterns = [
     path('events/', views.events, name="events"),
     path('faqs/', views.faqs, name="faqs"),
 
-    path('plus2/', views.plus2Home, name="plus2"),
+    path('plus2/', views.homePlus2, name="plus2"),
 ]
