@@ -114,12 +114,12 @@
             </p>
 
             <div class="partners-logos">
-                <img src="https://nsc-back.onrender.com/uploads/image-1713688494933-529226553.png" alt="Partner 1" />
-                <img src="https://nsc-back.onrender.com/uploads/image-1713689010648-144412850.png" alt="Partner 2" />
-                <img src="https://nsc-back.onrender.com/uploads/image-1713688814361-265774075.png" alt="Partner 3" />
-                <img src="https://nsc-back.onrender.com/uploads/image-1713688626679-876331155.png" alt="Partner 4" />
-                <img src="https://nsc-back.onrender.com/uploads/image-1713688529858-814094774.png" alt="Partner 5" />
-                <img src="https://nsc-back.onrender.com/uploads/image-1713688515371-721989507.jpg" alt="Partner 6" />
+                <img src="{% static 'images/partner1.png' %}" alt="Partner 1" />
+                <img src="{% static 'images/partner2.png' %}" alt="Partner 2" />
+                <img src="{% static 'images/partner3.png' %}" alt="Partner 3" />
+                <img src="{% static 'images/partner4.png' %}" alt="Partner 4" />
+                <img src="{% static 'images/partner5.png' %}" alt="Partner 5" />
+                <img src="{% static 'images/partner6.jpg' %}" alt="Partner 6" />
             </div>
 
             <div class="partners-stats">
@@ -148,6 +148,7 @@
 </section>
 
 
+
 <section id="programs" class="section-m-b">
     <div class="section_1260">
         <h4 class="section-subtitle">Explore our programs that align with your aspirations</h4>
@@ -156,47 +157,31 @@
 
             <div class="program-menu">
                 {% for program in programs %}
-                <button class="program {% if plus2 %}{% if program.program_key == 'science' %}active{% endif %}{% else %}{% if program.program_key == 'csit' %}active{% endif %}{% endif %}"
+                <button
+                    class="program {% if plus2 %}{% if program.program_key == 'science' %}active{% endif %}{% else %}{% if program.program_key == 'csit' %}active{% endif %}{% endif %}"
                     data-program="{{ program.program_key }}">
                     <span class="program-number">{{ forloop.counter }}</span> {{ program.program_key.upper }}
                 </button>
                 {% endfor %}
             </div>
-    
+
             <div class="program-content" id="program-content">
                 <h2 id="program-title">{{ default_program.title }}</h2>
-    
+
                 <div class="program-description">
-                    {% if not plus2 %}
-                    <div class="program-section">
-                        <div class="program-image">
-                            <img src="{{ default_program.image1.url }}" alt="{{ default_program.title }}" />
-                        </div>
-                        <div class="program-text">
-                            <div class="info-item">
-                                <span class="label">What?</span> {{ default_program.what }}
-                            </div>
-                            <div class="info-item">
-                                <span class="label">How?</span> {{ default_program.how }}
-                            </div>
-                            <div class="info-item">
-                                <span class="label">Why?</span> {{ default_program.why }}
-                            </div>
-                        </div>
-                    </div>
-                    {% endif %}
                     <div class="program-section reverse">
                         <div class="program-text">{{ default_program.description }}</div>
                         <div class="program-image">
-                            <img src="{% if plus2 %}{{ default_program.image1.url }}{% else %}{{ default_program.image2.url }}{% endif %}" alt="{{ default_program.title }}" />
+                            <img src="{{ default_program.image.url }}" alt="{{ default_program.title }}" />
                         </div>
                     </div>
                 </div>
-    
-                <div class="learn-more" onclick="window.location.href='{{ default_program.link }}'">
+
+                <div class="learn-more" onclick="window.location.href='{{ default_program.get_absolute_url }}'">
                     Learn More →
                 </div>
             </div>
+
         </div>
     </div>
 </section>
@@ -223,21 +208,33 @@
     </div>
 </section>
 
-<!-- <div class="marquee-container">
-  <div class="marquee" id="marqueeTop">SCIENCE • MANAGEMENT • LAW • SCIENCE • MANAGEMENT • LAW • SCIENCE • MANAGEMENT • LAW • SCIENCE • MANAGEMENT • LAW •</div>
-</div>
+<section id="faqs" class="section-m-b">
+    <div class="section_1260 faq">
+        <h4 class="section-subtitle">FAQs</h4>
+        <h2 class="section-title">Frequently Asked Questions</h2>
 
-<div class="marquee-container">
-  <div class="marquee reverse" id="marqueeBottom">SCIENCE • MANAGEMENT • LAW • SCIENCE • MANAGEMENT • LAW • SCIENCE • MANAGEMENT • LAW • SCIENCE • MANAGEMENT • LAW •</div>
-</div> -->
+        <div class="faq-list">
 
-<!-- <script src="{% static 'js/marquee.js' %}"></script> -->
+            {% for faq in faqs %}
+            <div class="faq-card">
+                <button class="faq-item">
+                    <span>{{faq.question}}</span>
+                    <span class="icon">+</span>
+                </button>
+                <div class="faq-answer">
+                    <div>
+                        <p>
+                            {{faq.answer}}
+                        </p>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
 
-<br /><br /><br /><br /><br />
-<br /><br /><br /><br /><br />
-<br /><br /><br /><br /><br />
-<br /><br /><br /><br /><br />
-<br /><br /><br /><br /><br />
+        </div>
+
+        <a href="#" class="faq-cta">More about NSC</a>
+</section>
 
 <script src="https://cdn.jsdelivr.net/npm/pannellum/build/pannellum.js"></script>
 
@@ -269,29 +266,31 @@
         cafeteria: "{% static 'images/pov/cafeteria.jpg' %}",
     };
 
-    const isPlus2 = {{ plus2|default_if_none:False|yesno:"true,false" }};
-
     const programsData = {
-        {% for p in programs %}
-            "{{ p.program_key }}": {
-                title: "{{ p.title|escapejs }}",
-                description: "{{ p.description|escapejs }}",
-                image1: "{{ p.image1.url }}",
-                {% if not plus2 %}
-                    what: "{{ p.what|escapejs }}",
-                    how: "{{ p.how|escapejs }}",
-                    why: "{{ p.why|escapejs }}",
-                    image2: "{{ p.image2.url }}",
-                {% endif %}
-                link: "{% url 'academics' p.program_key %}"
-        }{% if not forloop.last %}, {% endif %}
-        {% endfor %}
-    };
+    {% for p in programs %}
+    "{{ p.program_key }}": {
+        title: "{{ p.title|escapejs }}",
+            description: "{{ p.description|escapejs }}",
+                image: "{{ p.image.url }}",
+                    link: "{{ p.get_absolute_url }}"
+    } {% if not forloop.last %}, {% endif %}
+    {% endfor %}
+    }; 
+
+ const faqCards = document.querySelectorAll(".faq-card");
+
+faqCards.forEach(card => {
+  const button = card.querySelector(".faq-item");
+
+  button.addEventListener("click", () => {
+    card.classList.toggle("active");
+  });
+});
+
 </script>
 
 <script src="{% static 'js/bottom-nav.js' %}"></script>
 <script src="{% static 'js/panorama.js' %}?v=2"></script>
 <script src="{% static 'js/program.js' %}?v=2"></script>
 
-<!-- "{% static 'images/pov/' %}" -->
 {% endblock %}

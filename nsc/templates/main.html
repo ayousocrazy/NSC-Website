@@ -15,6 +15,7 @@
 
     <link rel="stylesheet" href="{% static 'styles/main.css' %}" />
     <link rel="stylesheet" href="{% static 'styles/nav.css' %}" />
+    <link rel="stylesheet" href="{% static 'styles/footer.css' %}" />
 
     {% block extra_css %}{% endblock %}
 
@@ -28,6 +29,7 @@
     <main class="main-wrapper">
         {% block content %}{% endblock %}
     </main>
+    {% include 'footer.html' %}
 </body>
 
 </html>

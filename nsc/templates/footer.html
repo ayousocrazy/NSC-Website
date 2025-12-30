@@ -1,0 +1,55 @@
+{% load static %}
+
+<footer class="footer">
+    <div class="footer-wrapper">
+        <div class="footer-container">
+            <div class="footer-logo">
+                <img src="{% static 'images/footer-logo.png' %}" alt="College Logo" class="logo" />
+                <h3># Learners to Leaders</h3>
+            </div>
+
+            <!-- CONTENT -->
+            <div class="footer-content">
+                <div class="footer-column">
+                    <div class="footer-section">
+                        <h4>Useful Links</h4>
+                        <ul>
+                            <li><a href="{% url 'home' %}">Home</a></li>
+                            <li><a href="#">About Us</a></li>
+                            <li><a href="{% url 'admissions' %}">Admissions</a></li>
+                            <li><a href="#">Faculty</a></li>
+                            <li><a href="https://bytes-8.netlify.app/">Journal-BYTES</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="footer-section">
+                        <h4>Follow Us On</h4>
+                        <div class="social-icons">
+                            <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                            <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="footer-column">
+                    <div class="footer-section">
+                        <h4>Contact</h4>
+                        <p>01-4620522/23/24</p>
+                        <p>nsc@newsummit.edu</p>
+                    </div>
+
+                    <div class="footer-section">
+                        <h4>Address</h4>
+                        <p>Shantinagar, Tinkune, Kathmandu</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer_copyright">
+            <p>
+                ©2023 New Summit College | Shantinagar, Kathmandu
+            </p>
+        </div>
+    </div>
+</footer>

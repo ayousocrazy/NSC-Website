@@ -2,44 +2,42 @@ from django.db import models
 from django.urls import reverse
 
 class Academics(models.Model):
+    PROGRAM_LEVEL = [
+        ('plus2', '+2 (NEB)'),
+        ('bachelors', 'Bachelors'),
+    ]
+
     PROGRAM_CHOICES = [
+        ('science', 'Science'),
+        ('management', 'Management'),
+        ('law', 'Law'),
         ('csit', 'BSc CSIT'),
         ('bca', 'BCA'),
         ('bbm', 'BBM'),
         ('bbs', 'BBS'),
     ]
 
-    program_key = models.CharField(max_length=10, choices=PROGRAM_CHOICES, unique=True)
+    program_key = models.CharField(max_length=15, choices=PROGRAM_CHOICES, unique=True)
     title = models.CharField(max_length=150)
-
-    what = models.TextField()
-    how = models.TextField()
-    why = models.TextField()
     description = models.TextField()
-
-    image1 = models.ImageField(upload_to='academics')
-    image2 = models.ImageField(upload_to='academics')
+    image = models.ImageField(upload_to='academics')  # unified image field
+    level = models.CharField(max_length=12, choices=PROGRAM_LEVEL)
 
     def __str__(self):
         return self.title
 
     def get_absolute_url(self):
         return reverse('academics', kwargs={'pk': self.program_key})
-    
-class AcademicsPlus2(models.Model):
-    PROGRAM_CHOICES = [
-        ('science', 'Science'),
-        ('management', 'Management'),
-        ('law', 'Law'),
+
+class FAQs(models.Model):
+    PROGRAM_LEVEL = [
+        ('plus2', '+2 (NEB)'),
+        ('bachelors', 'Bachelors'),
     ]
-
-    program_key = models.CharField(max_length=10, choices=PROGRAM_CHOICES, unique=True)
-    title = models.CharField(max_length=150)
-    description = models.TextField()
-    image1 = models.ImageField(upload_to='academics')
+    level = models.CharField(max_length=12, choices=PROGRAM_LEVEL)
+    question = models.CharField(max_length=150)
+    answer = models.TextField()
+    created = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return self.title
-
-    def get_absolute_url(self):
-        return reverse('academics', kwargs={'pk': self.program_key})
+        return self.question
