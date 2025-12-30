@@ -1,4 +1,6 @@
-{% extends 'main.html' %} {% load static %} {% block extra_css %}
+{% extends 'main.html' %} 
+{% load static %} 
+{% block extra_css %}
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pannellum/build/pannellum.css" />
 <link rel="stylesheet" href="{% static 'styles/home.css' %}" />
 
@@ -9,7 +11,9 @@
         }
     }
 </style>
-{% endblock %} {% block internal_nav %}
+{% endblock %} 
+
+{% block internal_nav %}
 <div class="header-nav-internal">
     <div class="bottom-nav">
         <a href="#partners" class="nav-item active">Industry Partners</a>
@@ -18,7 +22,9 @@
         <a href="#faqs" class="nav-item">FAQs</a>
     </div>
 </div>
-{% endblock %} {% block content %}
+{% endblock %} 
+
+{% block content %}
 
 <section>
     <div class="section_100 banner-wrapper">
@@ -147,8 +153,6 @@
     </div>
 </section>
 
-
-
 <section id="programs" class="section-m-b">
     <div class="section_1260">
         <h4 class="section-subtitle">Explore our programs that align with your aspirations</h4>
@@ -185,6 +189,36 @@
         </div>
     </div>
 </section>
+
+<div class="section_1260 section-m-b">
+    <div class="l-h-ad">
+
+        <div class="content">
+          <div class="badge">NEW</div>
+          <h1>Level up your learning with Learning Hammer!</h1>
+      
+          <ul class="subtext-list">
+            <li>NEB syllabus notes for Grades 10, 11 & 12</li>
+            <li>MCQ-based timed practice tests with feedback</li>
+            <li>Bridge courses for +2 Science, Management, BSc CSIT & BCA entrance</li>
+          </ul>
+      
+          <div class="features">
+            <button><i class="fa-solid fa-book"></i> Notes</button>
+            <button><i class="fa-solid fa-clock"></i> Timed MCQ</button>
+            <button><i class="fa-solid fa-file-circle-question"></i> Practice Questions</button>
+            <button><i class="fa-solid fa-puzzle-piece"></i> Bridge Course</button>
+            <button><i class="fa-solid fa-comment"></i> Feedback</button>
+          </div>
+      
+          <a href="https://learninghammer.com/" class="cta" target="_">Explore the Website →</a>
+        </div>
+      
+        <div class="qr">
+          <img src="{% static 'images/QR.png' %}" alt="Learning Hammer QR">
+        </div>
+    </div>
+</div>
 
 <section id="tour" class="section-m-b">
     <div class="section_1260">
