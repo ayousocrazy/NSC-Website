@@ -745,14 +745,19 @@
   }
 
   .l-h-ad .features {
-    justify-content: flex-start;
+    justify-content: center
+  }
+
+  .l-h-ad .l-h-link {
+    align-items: center;
+    text-align: center
   }
 
   .l-h-ad .qr {
     width: 100%;
     max-width: clamp(140px, 50vw, 220px);
     margin-top: clamp(12px, 3vw, 20px);
-    justify-content: flex-start;
+    justify-content: center;
   }
 
   .l-h-ad .qr img {
