@@ -62,6 +62,21 @@ section {
     scroll-margin-top: 72px;
 }
 
+.section_100 {
+  width: 100%;
+}
+
+.section_1260 {
+  max-width: 1260px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.section-m-b {
+  margin-bottom: clamp(2.25rem, 7vw, 6.5rem);
+}
+
+
 @media (max-width: 900px) {
     .main-wrapper {
         margin-top: 112px;

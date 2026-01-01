@@ -45,8 +45,16 @@ def homePlus2(request):
     }
     return render(request, "main/home.html", context)
 
-def academics(request):
-    return render(request, "main/academics.html")
+def academics(request, pk):
+    program = Academics.objects.filter(program_key=pk).first()
+    if program.level == "plus2":
+        context = {
+            "plus2": True,
+            "program": program,
+        }
+        return render(request, "main/plus2academics.html", context)
+    else:
+        return render(request, "main/academics.html", {"program": program})
 
 def admissions(request):
     return render(request, "main/admissions.html")

@@ -23,7 +23,7 @@
 
         <!-- Academics Dropdown -->
         <div class="nav-dropdown">
-          <p class="nav-parent">Academics</p>
+          <p class="nav-parent" {% if request.resolver_match.url_name == 'academics' %}style="color: var(--light-red);"{% endif %}>Academics</p>
           <div class="nav-dropdown-menu">
             {% if plus2 %}
             {% for program in plus2_programs %}
@@ -77,7 +77,7 @@
 
         <!-- Academics (Mobile) -->
         <div class="nav-dropdown">
-          <p class="nav-parent">Academics</p>
+          <p class="nav-parent" {% if request.resolver_match.url_name == 'academics' %}style="color: var(--light-red);"{% endif %}>Academics</p>
           <div class="nav-dropdown-menu">
             {% if plus2 %}
             {% for program in plus2_programs %}

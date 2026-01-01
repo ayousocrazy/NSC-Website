@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const navLinks = document.querySelectorAll(".nav-item");
 
     function updateActiveNav() {
-        let scrollPos = window.scrollY + window.innerHeight / 2; // middle of viewport
+        let scrollPos = window.scrollY + window.innerHeight / 2;
 
         sections.forEach(section => {
             const top = section.offsetTop;

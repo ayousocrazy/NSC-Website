@@ -1,0 +1,152 @@
+{% extends 'main.html' %}
+{% load static %}
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'styles/academics.css' %}" />
+
+<style>
+    @media (max-width: 900px) {
+        section {
+            scroll-margin-top: 120px;
+        }
+    }
+</style>
+{% endblock %}
+
+{% block internal_nav %}
+<div class="header-nav-internal">
+    <div class="bottom-nav">
+        <a href="#overview" class="nav-item active">Program Overview</a>
+        <a href="#subjects" class="nav-item">Subjects</a>
+        <a href="#career" class="nav-item">Degrees and Career</a>
+    </div>
+</div>
+{% endblock %}
+
+{% block content %}
+<section class="section_100 section-top">
+    <div class="section_1260">
+        <h1>+2 Science Program</h1>
+        <p><strong>New Summit College, Kathmandu</strong> – A strong academic foundation for future doctors, engineers,
+            scientists, and IT professionals.</p>
+    </div>
+</section>
+
+<div class="container section_1260">
+    <section id="overview" class="section-m-b">
+        <h2>Program Overview</h2>
+        <div class="overview-container">
+            <div class="content">
+                <p>The BSc CSIT at New Summit College combines core computing principles, software engineering, and IT
+                    systems
+                    with hands-on labs, project-based learning, and industry exposure.
+                    :contentReference[oaicite:2]{index=2}</p>
+                <p>This program prepares students not just academically, but professionally, through workshops,
+                    internships, and
+                    practical assignments right from early semesters. :contentReference[oaicite:3]{index=3}</p>
+            </div>
+
+            <div class="image">
+                <img src="{% static 'images/Q-R.png' %}" alt="">
+            </div>
+        </div>
+        <p>This program prepares students not just academically, but professionally, through workshops, internships, and
+            practical assignments right from early semesters. :contentReference[oaicite:3]{index=3}</p>
+    </section>
+
+    <section id="subjects" class="section-m-b">
+        <h2>Subjects</h2>
+        <div class="subject-list">
+            <div class="subject-item">
+                <div class="subject-icon">P</div>
+                <div>
+                    <h3>Physics</h3>
+                    <p>Mechanics, optics, electricity, magnetism, and modern physics with laboratory practice.</p>
+                </div>
+            </div>
+
+            <div class="subject-item">
+                <div class="subject-icon">C</div>
+                <div>
+                    <h3>Chemistry</h3>
+                    <p>Physical, organic, and inorganic chemistry supported by experimental lab sessions.</p>
+                </div>
+            </div>
+
+            <div class="subject-item">
+                <div class="subject-icon">B</div>
+                <div>
+                    <h3>Biology</h3>
+                    <p>Botany, zoology, genetics, and human biology for medical and life sciences.</p>
+                </div>
+            </div>
+
+            <div class="subject-item">
+                <div class="subject-icon">M</div>
+                <div>
+                    <h3>Mathematics</h3>
+                    <p>Algebra, calculus, trigonometry, and analytical problem-solving techniques.</p>
+                </div>
+            </div>
+
+            <div class="subject-item">
+                <div class="subject-icon">CS</div>
+                <div>
+                    <h3>Computer Science</h3>
+                    <p>Programming fundamentals, logical thinking, and basic computer applications.</p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section id="career" class="section-m-b">
+        <h2>Future Degrees & Career Opportunities</h2>
+
+        <div class="career-table">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Future Degrees</th>
+                        <th>Organizations & Positions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>MBBS, BDS, Nursing, Pharmacy</td>
+                        <td>Hospitals & Clinics – Doctor, Nurse, Pharmacist, Medical Officer</td>
+                    </tr>
+                    <tr>
+                        <td>Engineering (Civil, Computer, Electrical)</td>
+                        <td>Engineering Firms – Engineer, Site Supervisor, Software Engineer</td>
+                    </tr>
+                    <tr>
+                        <td>BSc CSIT, BCA, BIT</td>
+                        <td>IT Companies – Software Developer, Programmer, System Analyst</td>
+                    </tr>
+                    <tr>
+                        <td>BSc, BTech, Research Degrees</td>
+                        <td>Research Institutions – Scientist, Lab Technician, Research Assistant</td>
+                    </tr>
+                    <tr>
+                        <td>Agriculture & Environmental Science</td>
+                        <td>Agro-Industries, NGOs – Agriculture Officer, Environmental Analyst</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <!-- ================= APPLY ================= -->
+    <!-- <section id="apply">
+        <h2>Admission Information</h2>
+        <p>
+            Students must meet NEB eligibility requirements and complete the admission
+            process as guided by New Summit College.
+        </p>
+        <a href="#" class="btn">Contact Admissions</a>
+    </section> -->
+</div>
+
+<script src="{% static 'js/bottom-nav.js' %}"></script>
+
+{% endblock %}

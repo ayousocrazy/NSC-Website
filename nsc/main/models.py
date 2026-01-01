@@ -20,14 +20,65 @@ class Academics(models.Model):
     program_key = models.CharField(max_length=15, choices=PROGRAM_CHOICES, unique=True)
     title = models.CharField(max_length=150)
     description = models.TextField()
-    image = models.ImageField(upload_to='academics')  # unified image field
+    image = models.ImageField(upload_to='academics')
     level = models.CharField(max_length=12, choices=PROGRAM_LEVEL)
+    overview = models.TextField(null=True, blank=True)
+    in_short = models.TextField(null=True, blank=True)
+    skills = models.TextField(null=True, blank=True)
+    criteria = models.TextField(null=True, blank=True)
 
     def __str__(self):
         return self.title
 
     def get_absolute_url(self):
         return reverse('academics', kwargs={'pk': self.program_key})
+    
+class Course(models.Model):
+    program = models.ForeignKey(Academics, on_delete=models.CASCADE, related_name="courses")
+    year = models.PositiveIntegerField()
+    semester = models.PositiveIntegerField()
+
+    class Meta:
+        unique_together = ('program', 'year', 'semester')
+        ordering = ['year', 'semester']
+
+    def __str__(self):
+        return f"{self.program} — Year {self.year}, Semester {self.semester}"
+
+
+class Subject(models.Model):
+    course = models.ForeignKey(Course, on_delete=models.CASCADE, related_name="subjects")
+    code = models.CharField(max_length=20)
+    name = models.CharField(max_length=150)
+
+    class Meta:
+        unique_together = ('course', 'code')
+        ordering = ['code']
+
+    def __str__(self):
+        return f"{self.code} {self.name}"
+    
+class Career(models.Model):
+    program = models.ForeignKey(Academics, on_delete=models.CASCADE, related_name="careers")
+    organization = models.CharField(max_length=150)
+    positions = models.TextField()
+
+    def __str__(self):
+        return f"{self.program} {self.organization}"
+    
+class SubjectPlus2(models.Model):
+    program = models.ForeignKey(Academics, on_delete=models.CASCADE, related_name="plus2_subjects")
+    name = models.CharField(max_length=150)
+    description = models.TextField()
+    optional = models.BooleanField(default=False)
+
+class CareerPlus2(models.Model):
+    program = models.ForeignKey(Academics, on_delete=models.CASCADE, related_name="plus2_careers")
+    degree = models.CharField(max_length=150)
+    careers = models.TextField()
+
+    def __str__(self):
+        return f"{self.program} {self.degree}"
 
 class FAQs(models.Model):
     PROGRAM_LEVEL = [

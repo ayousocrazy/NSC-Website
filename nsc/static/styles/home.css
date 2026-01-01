@@ -1,17 +1,3 @@
-.section_100 {
-  width: 100%;
-}
-
-.section_1260 {
-  max-width: 1260px;
-  margin: 0 auto;
-  padding: 0 20px;
-}
-
-.section-m-b {
-  margin-bottom: clamp(2.25rem, 7vw, 6.5rem);
-}
-
 .section-title {
   color: var(--dark-font);
   font-size: clamp(1.75rem, calc(1.39rem + 1.7857vw), 3rem);
