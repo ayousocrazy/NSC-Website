@@ -15,6 +15,10 @@
   margin-bottom: clamp(0.5rem, 1vw, 1rem);
 }
 
+.section-top a{
+  color: var(--inverse-font);
+}
+
 .section-top strong {
   color: var(--lightest-blue);
 }
@@ -41,15 +45,13 @@
   width: 100%;
 }
 
-/* Text */
 .overview-container .content {
   flex: 1;
   font-size: clamp(13px, 2.6vw, 16px);
 }
 
-/* Image wrapper — same principle as your .qr */
 .overview-container .image {
-  width: clamp(96px, 40vw, 240px); /* shrinks on small screens */
+  width: clamp(96px, 40vw, 240px);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -90,20 +92,6 @@
   margin-bottom: clamp(6px, 1.8vw, 10px);
 }
 
-/* .flex {
-  display: flex;
-  flex-wrap: wrap;
-  gap: clamp(1rem, 2vw, 2rem);
-} */
-
-/* .card {
-  background: #fff;
-  border-radius: clamp(0.5rem, 1vw, 1rem);
-  padding: clamp(1rem, 2vw, 2rem);
-  box-shadow: 0 0 clamp(0.5rem, 1vw, 1rem) rgba(0,0,0,0.1);
-  flex: 1 1 clamp(250px, 35%, 400px);
-} */
-
 .course-year {
   margin-bottom: clamp(3rem, 6vw, 5rem);
 }
@@ -115,18 +103,12 @@
   align-items: start; 
 }
 
-@media (max-width: 768px) {
-  .semester-grid {
-    grid-template-columns: 1fr;
-  }
-}
-
 .semester-table {
   border-radius: clamp(0.6rem, 1vw, 1rem);
   overflow: hidden;
   background: var(--white);
   box-shadow: 0 10px 25px rgba(0,0,0,0.08);
-  height: fit-content; 
+  height: fit-content;
 }
 
 .semester-table table {
@@ -154,29 +136,6 @@
   width: 35%;
   font-weight: 600;
 }
-
-.skills-list {
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  gap: clamp(1rem, 2vw, 1.5rem);
-  margin-top: clamp(1rem, 2vw, 2rem);
-}
-
-.skills-list li {
-  background: var(--white);
-  padding: clamp(0.7rem, 2vw, 1rem);
-  border-radius: clamp(0.5rem, 1vw, 0.8rem);
-  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
-  font-weight: 500;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.skills-list li:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 12px 25px rgba(0,0,0,0.15);
-}
-
 
 .career-table {
   background: var(--white);
@@ -215,7 +174,8 @@
 }
 
 .subject-item {
-  background: #ffffff;
+  position: relative;
+  background: var(--white);
   padding: clamp(1.4rem, 3vw, 2.2rem);
   border-radius: clamp(0.6rem, 1vw, 1rem);
   box-shadow: 0 10px 25px rgba(0,0,0,0.08);
@@ -236,4 +196,112 @@
   font-size: clamp(1.4rem, 3vw, 1.8rem);
   font-weight: bold;
   color: var(--blue);
+}
+
+.subject-item small {
+  position: absolute;
+  top: clamp(0.6rem, 2vw, 1rem);
+  right: clamp(0.6rem, 2vw, 1rem);
+
+  font-size: clamp(0.6rem, 2vw, 0.85rem);
+  padding: clamp(2px, 1vw, 4px) clamp(8px, 2vw, 14px);
+
+  border: 2px solid var(--blue);
+  border-radius: 50px;
+  background: transparent;
+  font-weight: 600;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.subject-item:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 14px 30px rgba(0,0,0,0.12);
+}
+
+.styled-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.styled-list li {
+  display: flex;
+  align-items: center;
+  background: var(--lightest-blue);
+  margin-bottom: clamp(8px, 1.5vw, 14px);
+  padding: clamp(10px, 2vw, 16px)
+           clamp(14px, 3vw, 22px)
+           clamp(10px, 2vw, 16px)
+           clamp(50px, 6vw, 70px);
+  position: relative;
+  border-radius: clamp(3px, 0.5vw, 6px);
+  font-size: clamp(14px, 1.4vw, 16px);
+  box-sizing: border-box;
+}
+
+.styled-list .number {
+  position: absolute;
+  left: clamp(-12px, -1.5vw, -6px);
+  background: var(--sky-blue);
+  color: var(--inverse-font);
+  font-weight: bold;
+  width: clamp(32px, 5vw, 44px);
+  height: clamp(32px, 5vw, 44px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: rotate(-10deg);
+  border-radius: clamp(3px, 0.5vw, 6px);
+  font-size: clamp(14px, 1.6vw, 17px);
+}
+
+.styled-list .text {
+  color: var(--gray-font);
+  line-height: clamp(1.4, 1.6vw, 1.7);
+}
+
+@media (max-width: 900px) {
+  section {
+      scroll-margin-top: 120px;
+  }
+}
+
+@media (max-width: 768px) {
+  .semester-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .overview-container {
+    flex-direction: column;
+    gap: clamp(12px, 4vw, 16px);
+  }
+
+  .styled-list li {
+    padding-left: clamp(30px, 5vw, 48px);
+    padding-right: clamp(10px, 3vw, 16px);
+  }
+
+  .semester-table {
+    overflow-x: auto;
+  }
+}
+
+
+@media (max-width: 600px) {
+  .subject-item small {
+    top: auto;
+    bottom: clamp(0.5rem, 2vw, 0.9rem);
+    right: clamp(0.5rem, 2vw, 0.9rem);
+  }
+
+  .subject-item {
+    align-items: flex-start;
+  }
+}
+
+@media (max-width: 480px) {
+  .subject-item small {
+    border-width: 1.5px;
+  }
 }

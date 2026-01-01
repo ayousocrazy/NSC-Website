@@ -111,6 +111,7 @@
 
 .footer_copyright {
     text-align: center;
+    font-size: clamp(0.875rem, 1.75vw, 1rem);
 }
 
 @media (max-width: 768px) {

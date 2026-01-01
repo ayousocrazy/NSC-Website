@@ -81,7 +81,7 @@
           <div class="nav-dropdown-menu">
             {% if plus2 %}
             {% for program in plus2_programs %}
-            <a href="{{ program.get_absolute_url }}">{{ program.program_key.capitalized }}</a>
+            <a href="{{ program.get_absolute_url }}">{{ program.program_key|capfirst }}</a>
             {% endfor %}
             {% else %}
             {% for program in bachelors_programs %}

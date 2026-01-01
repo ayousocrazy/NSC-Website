@@ -45,16 +45,40 @@ def homePlus2(request):
     }
     return render(request, "main/home.html", context)
 
+from django.shortcuts import get_object_or_404, render
+from .models import Academics, Course, Career
+
 def academics(request, pk):
-    program = Academics.objects.filter(program_key=pk).first()
+    program = get_object_or_404(Academics, program_key=pk)
+
     if program.level == "plus2":
+        core_subjects = SubjectPlus2.objects.filter(program=program, optional=False)
+        optional_subjects = SubjectPlus2.objects.filter(program=program, optional=True)
+        careers = CareerPlus2.objects.filter(program=program)
+        program.criteria = program.criteria.split('\n') if program.criteria else []
+
+
         context = {
             "plus2": True,
             "program": program,
+            "core_subjects": core_subjects,
+            "optional_subjects": optional_subjects,
+            "careers": careers,
         }
         return render(request, "main/plus2academics.html", context)
-    else:
-        return render(request, "main/academics.html", {"program": program})
+
+    courses = Course.objects.filter(program=program).order_by('year', 'semester')
+    careers = Career.objects.filter(program=program)
+    program.criteria = program.criteria.split('\n') if program.criteria else []
+
+    context = {
+        "program": program,
+        "courses": courses,
+        "careers": careers,
+    }
+
+    return render(request, "main/academics.html", context)
+
 
 def admissions(request):
     return render(request, "main/admissions.html")

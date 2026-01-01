@@ -23,8 +23,6 @@ class Academics(models.Model):
     image = models.ImageField(upload_to='academics')
     level = models.CharField(max_length=12, choices=PROGRAM_LEVEL)
     overview = models.TextField(null=True, blank=True)
-    in_short = models.TextField(null=True, blank=True)
-    skills = models.TextField(null=True, blank=True)
     criteria = models.TextField(null=True, blank=True)
 
     def __str__(self):
@@ -36,7 +34,7 @@ class Academics(models.Model):
 class Course(models.Model):
     program = models.ForeignKey(Academics, on_delete=models.CASCADE, related_name="courses")
     year = models.PositiveIntegerField()
-    semester = models.PositiveIntegerField()
+    semester = models.PositiveIntegerField(null=True, blank=True)
 
     class Meta:
         unique_together = ('program', 'year', 'semester')
@@ -71,6 +69,9 @@ class SubjectPlus2(models.Model):
     name = models.CharField(max_length=150)
     description = models.TextField()
     optional = models.BooleanField(default=False)
+
+    def __str__(self):
+        return f"{self.program} {self.name}"
 
 class CareerPlus2(models.Model):
     program = models.ForeignKey(Academics, on_delete=models.CASCADE, related_name="plus2_careers")

@@ -17,7 +17,8 @@
     <div class="bottom-nav">
         <a href="#overview" class="nav-item active">Program Overview</a>
         <a href="#subjects" class="nav-item">Subjects</a>
-        <a href="#career" class="nav-item">Degrees and Career</a>
+        <a href="#career" class="nav-item">Career Opportunities</a>
+        <a href="#criteria" class="nav-item">Eligibility Criteria</a>
     </div>
 </div>
 {% endblock %}
@@ -25,9 +26,8 @@
 {% block content %}
 <section class="section_100 section-top">
     <div class="section_1260">
-        <h1>+2 Science Program</h1>
-        <p><strong>New Summit College, Kathmandu</strong> – A strong academic foundation for future doctors, engineers,
-            scientists, and IT professionals.</p>
+        <p><a href="{% url 'plus2' %}">Home</a> > <strong>Academics</strong></p>
+        <h1>+2 {{ program.title }} Program</h1>
     </div>
 </section>
 
@@ -36,65 +36,39 @@
         <h2>Program Overview</h2>
         <div class="overview-container">
             <div class="content">
-                <p>The BSc CSIT at New Summit College combines core computing principles, software engineering, and IT
-                    systems
-                    with hands-on labs, project-based learning, and industry exposure.
-                    :contentReference[oaicite:2]{index=2}</p>
-                <p>This program prepares students not just academically, but professionally, through workshops,
-                    internships, and
-                    practical assignments right from early semesters. :contentReference[oaicite:3]{index=3}</p>
+                <p>{{ program.overview }}</p>
             </div>
 
             <div class="image">
-                <img src="{% static 'images/Q-R.png' %}" alt="">
+                <img src="{{ program.image.url }}" alt="">
             </div>
         </div>
-        <p>This program prepares students not just academically, but professionally, through workshops, internships, and
-            practical assignments right from early semesters. :contentReference[oaicite:3]{index=3}</p>
+        <p>{{ program.description }}</p>
     </section>
 
     <section id="subjects" class="section-m-b">
         <h2>Subjects</h2>
         <div class="subject-list">
+            {% for subject in core_subjects %}
             <div class="subject-item">
-                <div class="subject-icon">P</div>
+                <div class="subject-icon">{{ subject.name|slice:":1"|upper }}</div>
                 <div>
-                    <h3>Physics</h3>
-                    <p>Mechanics, optics, electricity, magnetism, and modern physics with laboratory practice.</p>
+                    <h3>{{ subject.name }}</h3>
+                    <p>{{ subject.description }}</p>
                 </div>
             </div>
+            {% endfor %}
 
+            {% for subject in optional_subjects %}
             <div class="subject-item">
-                <div class="subject-icon">C</div>
+                <div class="subject-icon">{{ subject.name|slice:":1"|upper }}</div>
                 <div>
-                    <h3>Chemistry</h3>
-                    <p>Physical, organic, and inorganic chemistry supported by experimental lab sessions.</p>
+                    <h3>{{ subject.name }}</h3>
+                    <small>OPTIONAL</small>
+                    <p>{{ subject.description }}</p>
                 </div>
             </div>
-
-            <div class="subject-item">
-                <div class="subject-icon">B</div>
-                <div>
-                    <h3>Biology</h3>
-                    <p>Botany, zoology, genetics, and human biology for medical and life sciences.</p>
-                </div>
-            </div>
-
-            <div class="subject-item">
-                <div class="subject-icon">M</div>
-                <div>
-                    <h3>Mathematics</h3>
-                    <p>Algebra, calculus, trigonometry, and analytical problem-solving techniques.</p>
-                </div>
-            </div>
-
-            <div class="subject-item">
-                <div class="subject-icon">CS</div>
-                <div>
-                    <h3>Computer Science</h3>
-                    <p>Programming fundamentals, logical thinking, and basic computer applications.</p>
-                </div>
-            </div>
+            {% endfor %}
 
         </div>
     </section>
@@ -111,40 +85,31 @@
                     </tr>
                 </thead>
                 <tbody>
+                    {% for career in careers %}
                     <tr>
-                        <td>MBBS, BDS, Nursing, Pharmacy</td>
-                        <td>Hospitals & Clinics – Doctor, Nurse, Pharmacist, Medical Officer</td>
+                        <td>{{ career.degree }}</td>
+                        <td>{{ career.careers }}</td>
                     </tr>
-                    <tr>
-                        <td>Engineering (Civil, Computer, Electrical)</td>
-                        <td>Engineering Firms – Engineer, Site Supervisor, Software Engineer</td>
-                    </tr>
-                    <tr>
-                        <td>BSc CSIT, BCA, BIT</td>
-                        <td>IT Companies – Software Developer, Programmer, System Analyst</td>
-                    </tr>
-                    <tr>
-                        <td>BSc, BTech, Research Degrees</td>
-                        <td>Research Institutions – Scientist, Lab Technician, Research Assistant</td>
-                    </tr>
-                    <tr>
-                        <td>Agriculture & Environmental Science</td>
-                        <td>Agro-Industries, NGOs – Agriculture Officer, Environmental Analyst</td>
-                    </tr>
+                    {% endfor %}
                 </tbody>
             </table>
         </div>
     </section>
 
-    <!-- ================= APPLY ================= -->
-    <!-- <section id="apply">
-        <h2>Admission Information</h2>
-        <p>
-            Students must meet NEB eligibility requirements and complete the admission
-            process as guided by New Summit College.
-        </p>
-        <a href="#" class="btn">Contact Admissions</a>
-    </section> -->
+        <section id="criteria" class="section-m-b">
+        <h2>Eligibility Criteria</h2>
+
+        <ol class="styled-list">
+            {% for criteria in program.criteria %}
+            <li>
+                <span class="number">{{ forloop.counter }}</span>
+                <span class="text">
+                    {{ criteria }}
+                </span>
+            </li>
+            {% endfor %}
+        </ol>
+    </section>
 </div>
 
 <script src="{% static 'js/bottom-nav.js' %}"></script>
