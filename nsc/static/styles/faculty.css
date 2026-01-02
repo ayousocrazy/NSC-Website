@@ -1,13 +1,8 @@
 .section_top {
-  padding-bottom: clamp(2rem, 5vw, 4rem);
-}
-
-.section_card {
-  border-radius: clamp(1rem, 2vw, 1.5rem);
-  background: linear-gradient(135deg,
+  margin-bottom: clamp(2rem, 5vw, 4rem);
+  background: linear-gradient(-135deg,
       var(--lightest-font) 0%,
       var(--dark-font) 100%);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.35);
 }
 
 .card_content {

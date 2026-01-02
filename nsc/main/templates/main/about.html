@@ -1,0 +1,106 @@
+{% extends 'main.html' %}
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'styles/about.css' %}" />
+
+<style>
+    .header_burger-content {
+        top: 64px;
+        height: calc(100% - 64px);
+    }
+
+    @media (max-width: 992px) {
+        .main-wrapper {
+            margin-top: 64px !important;
+        }
+    }
+</style>
+{% endblock %}
+
+{% block internal_nav %}{% endblock %}
+
+{% block content %}
+<section class="section_100 section_top">
+    <div class="section_1260 card_content">
+        <p><a href="{% url 'home' %}">Home</a> > About</p>
+        <h1>About New Summit College (NSC)</h1>
+    </div>
+</section>
+
+<section class="section_1260 about-nsc">
+    <div class="about-card">
+        <div class="about-content">
+            <h3 class="about-title">NSC</h3>
+            <p>
+                New Summit College is a leading academic institution committed to excellence in
+                education, innovation, and leadership. Since its establishment, NSC has focused on
+                nurturing critical thinking, technical skills, and ethical values among students.
+            </p>
+            <p>
+                With strong university affiliations, experienced faculty, and student-driven
+                initiatives like TechTrix, NSC continues to shape future-ready graduates
+                equipped for global challenges.
+            </p>
+        </div>
+
+        <div class="about-image">
+            <img src="{% static 'images/about.jpg' %}" alt="New Summit College Campus">
+        </div>
+    </div>
+</section>
+
+<section class="section_1260">
+    <div class="timeline">
+
+        <div class="timeline-item left">
+            <span class="year">2055 B.S.</span>
+            <div class="card"> <strong> Establishment of New Summit College </strong> at Old Baneshwor, Kathmandu,
+                offering +2 level programs</div>
+        </div>
+
+        <div class="timeline-item right">
+            <span class="year">2064 B.S.</span>
+            <div class="card">Expanded operations with <strong>Tribhuvan University-affiliated bachelor’s
+                    programs</strong></div>
+        </div>
+
+        <div class="timeline-item left">
+            <span class="year">2075 B.S.</span>
+            <div class="card"><strong>The first edition of TechTrix</strong>, a technology and innovation event
+                organized by the NSC’s IT students</div>
+        </div>
+
+        <div class="timeline-item right">
+            <span class="year">2080 B.S.</span>
+            <div class="card"><strong>The third edition of TechTrix</strong> hosted at New Summit College, featuring a
+                three-day hackathon</div>
+        </div>
+
+        <div class="timeline-item left">
+            <span class="year">2081 B.S.</span>
+            <div class="card">New Summit College held the grand opening of <strong>“Minds in Motion”</strong>, a
+                pre-event for TechTrix Nepal aligned with World Environment Day</div>
+        </div>
+
+        <div class="timeline-item right">
+            <span class="year">2082 B.S.</span>
+            <div class="card">
+                New Summit College signed a <strong>MoU with the Confucius Institute at TU</strong> to enhance Chinese
+                language and cultural learning opportunities for students
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<section class="section_1260 graduation-hero">
+    <img src="{% static 'images/hats.png' %}" alt="Graduation hats" class="floating-hats">
+
+    <h2 class="hero-title">
+        Learn and Lead with NSC
+    </h2>
+
+    <img src="{% static 'images/graduation.png' %}" alt="NSC graduation celebration" class="students-img">
+</section>
+{% endblock %}

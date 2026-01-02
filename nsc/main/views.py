@@ -100,5 +100,5 @@ def faculty(request):
 def events(request):
     return render(request, "main/events.html")
 
-def faqs(request):
-    return render(request, "main/faqs.html")
+def about(request):
+    return render(request, "main/about.html")
