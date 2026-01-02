@@ -83,8 +83,19 @@ def academics(request, pk):
 def admissions(request):
     return render(request, "main/admissions.html")
 
-def alumini(request):
-    return render(request, "main/alumini.html")
+def faculty(request):
+    management_faculties = Faculty.objects.filter(
+        category__in=['MANAGEMENT', 'HOD']
+    )
+    teaching_faculties = Faculty.objects.filter(category='TEACHING')
+    non_teaching_faculties = Faculty.objects.filter(category='NON_TEACHING')
+
+    context = {
+        'management_faculties': management_faculties,
+        'teaching_faculties': teaching_faculties,
+        'non_teaching_faculties': non_teaching_faculties,
+    }
+    return render(request, "main/faculty.html", context)
 
 def events(request):
     return render(request, "main/events.html")

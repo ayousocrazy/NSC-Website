@@ -82,10 +82,6 @@
   text-decoration: none;
 }
 
-.footer-column a:hover {
-  color: var(--lightest-red);
-}
-
 .social-icons {
   display: flex;
   gap: clamp(12px, 2vw, 16px);

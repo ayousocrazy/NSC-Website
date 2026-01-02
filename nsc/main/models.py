@@ -20,7 +20,7 @@ class Academics(models.Model):
     program_key = models.CharField(max_length=15, choices=PROGRAM_CHOICES, unique=True)
     title = models.CharField(max_length=150)
     description = models.TextField()
-    image = models.ImageField(upload_to='academics')
+    image = models.ImageField(upload_to='academics', blank=True, null=True)
     level = models.CharField(max_length=12, choices=PROGRAM_LEVEL)
     overview = models.TextField(null=True, blank=True)
     criteria = models.TextField(null=True, blank=True)
@@ -93,3 +93,31 @@ class FAQs(models.Model):
 
     def __str__(self):
         return self.question
+
+class Faculty(models.Model):
+    CATEGORY_CHOICES = [
+        ('MANAGEMENT', 'College Management'),  
+        ('HOD', 'Heads of Departments'),       
+        ('TEACHING', 'Teaching Faculty'),      
+        ('NON_TEACHING', 'Non-Teaching Staff'),
+    ]
+
+    name = models.CharField(max_length=100)
+    image = models.ImageField(upload_to='faculty', blank=True, null=True)
+
+    description = models.TextField(
+        help_text="Designation, subjects taught, responsibilities, etc."
+    )
+
+    category = models.CharField(
+        max_length=20,
+        choices=CATEGORY_CHOICES
+    )
+
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        ordering = ['created_at']
+
+    def __str__(self):
+        return self.name

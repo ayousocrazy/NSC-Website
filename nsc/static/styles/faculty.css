@@ -1,0 +1,154 @@
+.section_top {
+  padding-bottom: clamp(2rem, 5vw, 4rem);
+}
+
+.section_card {
+  border-radius: clamp(1rem, 2vw, 1.5rem);
+  background: linear-gradient(135deg,
+      var(--lightest-font) 0%,
+      var(--dark-font) 100%);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.35);
+}
+
+.card_content {
+  padding: clamp(2rem, 6vw, 5rem);
+}
+
+.card_content p {
+  color: var(--light-gray-bg);
+  font-size: clamp(0.9rem, 1.25vw, 1.5rem);
+  margin-bottom: clamp(0.5rem, 1vw, 1rem);
+}
+
+.card_content a {
+  color: var(--inverse-font);
+  text-decoration: none;
+}
+
+.card_content a:hover {
+  text-decoration: underline;
+}
+
+.card_content h1 {
+  color: var(--inverse-font);
+  font-size: clamp(2rem, 4vw, 3rem);
+  margin-bottom: clamp(0.5rem, 1vw, 1rem);
+  line-height: 1.1;
+  font-weight: 700;
+}
+
+.team {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: clamp(2.5rem, 5vw, 4.5rem) clamp(1rem, 3vw, 2.5rem);
+  padding: clamp(3rem, 6vw, 6rem) 0;
+  max-width: 1260px;
+  margin: auto;
+}
+
+.card {
+  position: relative;
+  width: 260px;
+  justify-self: center;
+  color: var(--dark-font);
+}
+
+.card.offset {
+  margin-top: clamp(1rem, 4vw, 3rem);
+}
+
+.hanger {
+  position: absolute;
+  top: -56px;
+  left: 50%;
+  transform: translateX(-50%);
+  height: 56px;
+  border-left: 2px dashed #000;
+}
+
+.ring {
+  position: absolute;
+  top: -76px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: white;
+  border: 6px solid currentColor;
+}
+
+.card-body {
+  background: white;
+  border-radius: 20px;
+  border: solid 1px var(--black);
+  overflow: hidden;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
+}
+
+.card-media {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+}
+
+.card-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.card-content {
+  padding: clamp(1rem, 3vw, 2rem) clamp(1rem, 2.5vw, 1.5rem) clamp(1.5rem, 3.5vw, 2rem);
+  text-align: center;
+}
+
+.card-content h3 {
+  margin: clamp(0.3rem, 1vw, 0.6rem) 0;
+  font-size: clamp(1rem, 2vw, 1.3rem);
+  font-weight: 700;
+}
+
+.card-content p {
+  font-size: clamp(0.85rem, 1.8vw, 1rem);
+  font-weight: 500;
+  color: var(--gray-font);
+  line-height: 1.4;
+}
+
+.section-title {
+  font-size: clamp(1.6rem, 3vw, 2.4rem);
+  margin-bottom: clamp(0.8rem, 2vw, 1.2rem);
+  text-align: center;
+  font-weight: 900;
+
+  color: var(--white);
+  text-shadow:
+    2px 2px 0 var(--black),
+    -2px 2px 0 var(--black),
+    2px -2px 0 var(--black),
+    -2px -2px 0 var(--black);
+}
+
+.section-subtitle {
+  font-size: clamp(0.95rem, 1.8vw, 1.2rem);
+  padding: clamp(0.6rem, 1.5vw, 1.1rem);
+  margin-bottom: clamp(1.2rem, 2.5vw, 2rem);
+  text-align: justify;
+  font-weight: 600;
+  color: var(--light-font);
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.6;
+}
+
+@media (max-width: 768px) {
+  .card.offset {
+    margin-top: 0;
+  }
+
+  .ring,
+  .hanger {
+    display: none;
+  }
+}

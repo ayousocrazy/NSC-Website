@@ -37,8 +37,8 @@
           </div>
         </div>
 
-        <a href="{% url 'alumini' %}" class="{% if request.resolver_match.url_name == 'alumini' %}active{% endif %}">
-          Alumini
+        <a href="{% url 'faculty' %}" class="{% if request.resolver_match.url_name == 'faculty' %}active{% endif %}">
+          Faculty
         </a>
 
         <a href="{% url 'events' %}" class="{% if request.resolver_match.url_name == 'events' %}active{% endif %}">
@@ -91,8 +91,8 @@
           </div>
         </div>
 
-        <a href="{% url 'alumini' %}"
-          class="{% if request.resolver_match.url_name == 'alumini' %}active{% endif %}">Alumini</a>
+        <a href="{% url 'faculty' %}"
+          class="{% if request.resolver_match.url_name == 'faculty' %}active{% endif %}">Faculty</a>
         <a href="{% url 'events' %}"
           class="{% if request.resolver_match.url_name == 'events' %}active{% endif %}">Events</a>
         <a href="{% url 'faqs' %}" class="{% if request.resolver_match.url_name == 'faqs' %}active{% endif %}">FAQs</a>

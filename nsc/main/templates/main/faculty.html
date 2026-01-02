@@ -1,0 +1,116 @@
+{% extends 'main.html' %}
+{% load static %}
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'styles/faculty.css' %}" />
+
+<style>
+    .header_burger-content {
+        top: 64px;
+        height: calc(100% - 64px);
+    }
+
+    @media (max-width: 992px) {
+        .main-wrapper {
+            margin-top: 64px !important;
+        }
+    }
+</style>
+{% endblock %}
+
+{% block internal_nav %}
+{% endblock %}
+
+{% block content %}
+<section class="section_1260 section_top">
+    <div class="section_card">
+        <div class="card_content">
+            <p><a href="{% url 'home' %}">Home</a> > Faculty</p>
+            <h1>Our Team</h1>
+        </div>
+    </div>
+</section>
+
+
+<section class="section_1260">
+    <h2 class="section-title">College Management</h2>
+    <p class="section-subtitle">
+        Institutional leadership team including the Principal, Chairman, and Department Heads (HODs) responsible for strategic 
+        decision-making, academic governance, policy implementation, departmental supervision, curriculum oversight, examination 
+        management, institutional growth, and coordination between faculty, students, and stakeholders.
+    </p>
+
+    <div class="team">
+        {% for faculty in management_faculties %}
+        <div class="card {% if forloop.counter|divisibleby:2 %} offset {% endif %}">
+            <div class="hanger"></div>
+            <div class="ring"></div>
+            <div class="card-body">
+                <div class="card-media">
+                    <img src="{{ faculty.image.url }}">
+                </div>
+                <div class="card-content">
+                    <h3>{{ faculty.name }}</h3>
+                    <p>{{ faculty.description }}</p>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</section>
+
+
+<section class="section_1260">
+    <h2 class="section-title">Teaching Faculty</h2>
+    <p class="section-subtitle">
+        Academic instructors including teachers and lecturers responsible for classroom delivery, practical lab guidance, 
+        student mentorship, assignments, academic evaluations, project supervision, knowledge transfer, discipline-specific 
+        training, and supporting students’ academic and professional development.
+    </p>
+
+    <div class="team">
+        {% for faculty in teaching_faculties %}
+        <div class="card {% if forloop.counter|divisibleby:2 %} offset {% endif %}">
+            <div class="hanger"></div>
+            <div class="ring"></div>
+            <div class="card-body">
+                <div class="card-media">
+                    <img src="{{ faculty.image.url }}">
+                </div>
+                <div class="card-content">
+                    <h3>{{ faculty.name }}</h3>
+                    <p>{{ faculty.description }}</p>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</section>
+
+
+<section class="section_1260 section-m-b">
+    <h2 class="section-title">Non-Teaching Faculty</h2>
+    <p class="section-subtitle">
+        Administrative and support staff responsible for student admissions, financial assistance, front-desk communication, 
+        academic documentation, examination logistics, institutional coordination, student record handling, internal operations, 
+        and ensuring the smooth daily functioning of the college.
+    </p>
+
+    <div class="team">
+        {% for faculty in non_teaching_faculties %}
+        <div class="card {% if forloop.counter|divisibleby:2 %} offset {% endif %}">
+            <div class="hanger"></div>
+            <div class="ring"></div>
+            <div class="card-body">
+                <div class="card-media">
+                    <img src="{{ faculty.image.url }}">
+                </div>
+                <div class="card-content">
+                    <h3>{{ faculty.name }}</h3>
+                    <p>{{ faculty.description }}</p>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</section>
+{% endblock %}

@@ -18,6 +18,9 @@
 .section-top a{
   color: var(--inverse-font);
 }
+.section-top a:hover {
+  text-decoration: underline;
+}
 
 .section-top strong {
   color: var(--lightest-blue);

@@ -5,7 +5,7 @@ urlpatterns = [
     path('', views.home, name="home"),
     path('academics/<str:pk>/', views.academics, name='academics'),
     path('admissions/', views.admissions, name="admissions"),
-    path('alumini/', views.alumini, name="alumini"),
+    path('faculty/', views.faculty, name="faculty"),
     path('events/', views.events, name="events"),
     path('faqs/', views.faqs, name="faqs"),
 
