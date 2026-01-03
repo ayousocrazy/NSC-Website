@@ -12,11 +12,11 @@ SECRET_KEY = os.environ.get("SECRET_KEY")
 DEBUG = os.environ.get("DEBUG") == "True"
 
 ALLOWED_HOSTS = [
-    'nsc.onrender.com', '*'
+    'nsc-website-ve92.onrender.com', '*'
 ]
 
 CSRF_TRUSTED_ORIGINS = [
-    'https://nsc.onrender.com',
+    'https://nsc-website-ve92.onrender.com',
 ]
 
 INSTALLED_APPS = [
