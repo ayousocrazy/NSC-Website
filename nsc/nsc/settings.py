@@ -12,7 +12,7 @@ SECRET_KEY = os.environ.get("SECRET_KEY")
 DEBUG = os.environ.get("DEBUG") == "True"
 
 ALLOWED_HOSTS = [
-    'nsc-website-ve92.onrender.com', '*'
+    'nsc-website-ve92.onrender.com'
 ]
 
 CSRF_TRUSTED_ORIGINS = [
@@ -65,24 +65,21 @@ WSGI_APPLICATION = 'nsc.wsgi.application'
 
 PRODUCTION = os.environ.get("PRODUCTION") == "True"
 
-if PRODUCTION:
-    DATABASES = {
-        'default': dj_database_url.config(
-            default=os.environ.get("DATABASE_URL"),
-            conn_max_age=600,
-        )
-    }
-
-    DATABASES['default']['OPTIONS'] = {
-        'sslmode': 'require'
-    }
-else:
-    DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "db.sqlite3",
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': os.environ.get('DB_NAME', 'postgres'),
+        'USER': os.environ.get('DB_USER', 'postgres'),
+        'PASSWORD': os.environ.get('DB_PASSWORD', ''),
+        'HOST': os.environ.get('DB_HOST', 'localhost'),
+        'PORT': os.environ.get('DB_PORT', '5432'),
+        'OPTIONS': {
+            'sslmode': os.environ.get('DB_SSLMODE', 'require')
         }
     }
+}
+
+
 
 # DATABASES = {
 #     'default': {
