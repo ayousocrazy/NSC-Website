@@ -131,6 +131,7 @@
   margin-bottom: clamp(1.2rem, 2.5vw, 2rem);
   text-align: justify;
   font-weight: 600;
+  font-family: 'SourceSans3';
   color: var(--light-font);
   margin-left: auto;
   margin-right: auto;
