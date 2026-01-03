@@ -11,11 +11,13 @@ SECRET_KEY = os.environ.get("SECRET_KEY")
 
 DEBUG = os.environ.get("DEBUG") == "True"
 
-ALLOWED_HOSTS = ['nsc-64db.onrender.com']
+ALLOWED_HOSTS = [
+    'nsc-website-ve92.onrender.com', '*'
+]
 
-
-CSRF_TRUSTED_ORIGINS = ['https://nsc-64db.onrender.com']
-
+CSRF_TRUSTED_ORIGINS = [
+    'https://nsc-website-ve92.onrender.com',
+]
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -61,34 +63,19 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'nsc.wsgi.application'
 
-PRODUCTION = os.environ.get("PRODUCTION") == "True"
-
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': os.environ.get('DB_NAME', 'postgres'),
-        'USER': os.environ.get('DB_USER', 'postgres'),
-        'PASSWORD': os.environ.get('DB_PASSWORD', ''),
-        'HOST': os.environ.get('DB_HOST', 'localhost'),
-        'PORT': os.environ.get('DB_PORT', '5432'),
+        'ENGINE': os.environ.get("DATABASE_ENGINE", "django.db.backends.sqlite3"),
+        'NAME': os.environ.get("DATABASE_NAME", BASE_DIR / "db.sqlite3"),
+        'USER': os.environ.get("DATABASE_USER", ""),
+        'PASSWORD': os.environ.get("DATABASE_PASSWORD", ""),
+        'HOST': os.environ.get("DATABASE_HOST", ""),
+        'PORT': os.environ.get("DATABASE_PORT", ""),
         'OPTIONS': {
-            'sslmode': os.environ.get('DB_SSLMODE', 'require')
+            'timeout': 20,
         }
     }
 }
-
-
-
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql',
-#         'NAME': os.environ.get("NAME"),
-#         'USER': os.environ.get("USER"),
-#         'PASSWORD': os.environ.get("PASSWORD"),
-#         'HOST': os.environ.get("HOST"),
-#         'PORT': os.environ.get("PORT"),
-#     }
-# }
 
 AUTH_PASSWORD_VALIDATORS = [
     {

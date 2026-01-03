@@ -2,4 +2,3 @@ env
 .env
 __pycache__
 nsc/staticfiles
-db.sqlite3
