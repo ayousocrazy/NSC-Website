@@ -11,13 +11,11 @@ SECRET_KEY = os.environ.get("SECRET_KEY")
 
 DEBUG = os.environ.get("DEBUG") == "True"
 
-ALLOWED_HOSTS = [
-    'nsc-website-ve92.onrender.com'
-]
+ALLOWED_HOSTS = ['nsc-64db.onrender.com']
 
-CSRF_TRUSTED_ORIGINS = [
-    'https://nsc-website-ve92.onrender.com',
-]
+
+CSRF_TRUSTED_ORIGINS = ['https://nsc-64db.onrender.com']
+
 
 INSTALLED_APPS = [
     'django.contrib.admin',
