@@ -23,13 +23,18 @@
 
 <body>
     {% include 'nav.html' %}
+    {% include 'e-s.html' %}
 
     {% block internal_nav %}{% endblock %}
 
     <main class="main-wrapper">
         {% block content %}{% endblock %}
     </main>
+    {% if no_footer %}
+
+    {% else %}
     {% include 'footer.html' %}
+    {% endif %}
 </body>
 
 </html>

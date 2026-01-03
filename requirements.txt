@@ -5,3 +5,5 @@ dj-database-url>=2.1
 pillow==12.0.0
 python-dotenv
 whitenoise
+openpyxl
+portalocker

@@ -12,15 +12,15 @@
     <div class="header-content">
       <div class="header-nav-external">
 
-        <a href="{% url 'home' %}" class="{% if request.resolver_match.url_name in 'home plus2' %}active{% endif %}">
+        <a href="{% if plus2 %}{% url 'plus2' %}{% else %}{% url 'home' %}{% endif %}" class="{% if request.resolver_match.url_name in 'home plus2' %}active{% endif %}">
           Home
         </a>
         
-        <a href="{% url 'about' %}" class="{% if request.resolver_match.url_name == 'about' %}active{% endif %}">
+        <a href="{% url 'about' %}?level={% if plus2 %}plus2{% endif %}" class="{% if request.resolver_match.url_name == 'about' %}active{% endif %}">
           About
         </a>
 
-        <a href="{% url 'admissions' %}"
+        <a href="{% url 'admissions' %}?level={% if plus2 %}plus2{% endif %}"
           class="{% if request.resolver_match.url_name == 'admissions' %}active{% endif %}">
           Admissions
         </a>
@@ -41,21 +41,18 @@
           </div>
         </div>
 
-        <a href="{% url 'faculty' %}" class="{% if request.resolver_match.url_name == 'faculty' %}active{% endif %}">
+        <a href="{% url 'faculty' %}?level={% if plus2 %}plus2{% endif %}" class="{% if request.resolver_match.url_name == 'faculty' %}active{% endif %}">
           Faculty
-        </a>
-
-        <a href="{% url 'events' %}" class="{% if request.resolver_match.url_name == 'events' %}active{% endif %}">
-          Events
         </a>
 
       </div>
 
       <div class="desktop-buttons">
+        <a href="{% url 'form' %}"><span class="header-btn active">Apply</span></a>
         {% if plus2 %}
-        <a href="{% url 'home' %}"><span class="header-btn active">Bachelors</span></a>
+        <a href="{% url 'home' %}"><span class="header-btn">To Bachelors</span></a>
         {% else %}
-        <a href="{% url 'plus2' %}"><span class="header-btn">Plus 2</span></a>
+        <a href="{% url 'plus2' %}"><span class="header-btn">To Plus 2</span></a>
         {% endif %}
       </div>
     </div>
@@ -72,9 +69,9 @@
       <div class="header-nav-external">
         <a href="{% url 'home' %}"
           class="{% if request.resolver_match.url_name in 'home plus2' %}active{% endif %}">Home</a>
-        <a href="{% url 'about' %}" 
+        <a href="{% url 'about' %}?level={% if plus2 %}plus2{% endif %}" 
           class="{% if request.resolver_match.url_name == 'about' %}active{% endif %}">About</a>
-        <a href="{% url 'admissions' %}"
+        <a href="{% url 'admissions' %}?level={% if plus2 %}plus2{% endif %}"
           class="{% if request.resolver_match.url_name == 'admissions' %}active{% endif %}">Admissions</a>
 
         <!-- Academics (Mobile) -->
@@ -93,15 +90,14 @@
           </div>
         </div>
 
-        <a href="{% url 'faculty' %}"
+        <a href="{% url 'faculty' %}?level={% if plus2 %}plus2{% endif %}"
           class="{% if request.resolver_match.url_name == 'faculty' %}active{% endif %}">Faculty</a>
-        <a href="{% url 'events' %}"
-          class="{% if request.resolver_match.url_name == 'events' %}active{% endif %}">Events</a>
       </div>
 
       <div class="mobile-buttons">
+        <a href="{% url 'form' %}"><span class="header-btn active">Apply Now</span></a>
         {% if plus2 %}
-        <a href="{% url 'home' %}"><span class="header-btn active">Bachelors</span></a>
+        <a href="{% url 'home' %}"><span class="header-btn">Bachelors</span></a>
         {% else %}
         <a href="{% url 'plus2' %}"><span class="header-btn">Plus 2</span></a>
         {% endif %}

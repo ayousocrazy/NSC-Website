@@ -44,7 +44,7 @@
                 </p>
 
                 <div class="cta-buttons">
-                    <a href="#apply" class="btn btn-primary">Apply Now</a>
+                    <a href="{% url 'form' %}" class="btn btn-primary">Apply Now</a>
                     <a href="https://heyzine.com/flip-book/80c29e7e1f.html" class="btn btn-secondary"
                         target="_">Brochure</a>
                 </div>
@@ -190,7 +190,7 @@
     </div>
 </section>
 
-<div class="section_1260 section-m-b">
+<div class="section_1260 section-m-b" id="learninghammer" style="scroll-margin-top: 120px;">
     <div class="l-h-ad">
 
         <div class="content">
@@ -268,7 +268,7 @@
 
         </div>
 
-        <a href="#" class="faq-cta">More about NSC</a>
+        <a href="{% url 'about' %}?level={% if plus2 %}plus2{% endif %}" class="faq-cta">More about NSC</a>
 </section>
 
 <script src="https://cdn.jsdelivr.net/npm/pannellum/build/pannellum.js"></script>

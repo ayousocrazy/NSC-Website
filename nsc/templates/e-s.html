@@ -1,0 +1,32 @@
+{% if messages %}
+    {% for message in messages %}
+        <div id="toast"
+             style="
+                position: fixed;
+                top: 64px;
+                right: 24px;
+                z-index: 9999;
+                padding: 14px 20px;
+                min-width: 260px;
+                max-width: 320px;
+                color: #fff;
+                font-size: 14px;
+                border-radius: 6px;
+                box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+                background-color: {% if message.tags == 'success' %}#16a34a{% else %}#dc2626{% endif %};
+             ">
+            {{ message }}
+        </div>
+    {% endfor %}
+
+    <script>
+    setTimeout(function () {
+        const toast = document.getElementById("toast");
+        if (toast) {
+            toast.style.opacity = "0";
+            toast.style.transition = "opacity 0.5s ease";
+            setTimeout(() => toast.remove(), 500);
+        }
+    }, 5000);
+    </script>
+{% endif %}

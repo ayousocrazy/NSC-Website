@@ -1,0 +1,149 @@
+{% extends 'main.html' %}
+{% load static %}
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'styles/form.css' %}" />
+
+<style>
+    .header_burger-content {
+        top: 64px;
+        height: calc(100% - 64px);
+    }
+
+    @media (max-width: 992px) {
+        .main-wrapper {
+            margin-top: 64px !important;
+        }
+    }
+</style>
+{% endblock %}
+
+{% block internal_nav %}{% endblock %}
+
+{% block content %}
+
+<div class="form-container">
+
+    <div class="logo">
+        <img src="{% static 'images/header-logo.png' %}" alt="Academy Logo">
+    </div>
+
+    <form method="post" action="{% url 'form' %}" onsubmit="lockButton()">
+        {% csrf_token %}
+
+        <h2>Personal Information</h2>
+
+        <div class="form-row">
+            <div>
+                <label>First Name <span class="required">*</span></label>
+                <input type="text" name="first_name" required>
+            </div>
+            <div>
+                <label>Middle Name</label>
+                <input type="text" name="middle_name">
+            </div>
+            <div>
+                <label>Last Name <span class="required">*</span></label>
+                <input type="text" name="last_name" required>
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div>
+                <label>Gender <span class="required">*</span></label>
+                <div class="radio-group">
+                    <label><input type="radio" name="gender" value="Male" required> Male</label>
+                    <label><input type="radio" name="gender" value="Female"> Female</label>
+                    <label><input type="radio" name="gender" value="Other"> Other</label>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div>
+                <label>Email <span class="required">*</span></label>
+                <input type="email" name="email" required>
+            </div>
+            <div>
+                <label>Phone Number <span class="required">*</span></label>
+                <input type="tel" name="phone" required>
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div>
+                <label>Address <span class="required">*</span></label>
+                <input type="text" name="address" required>
+            </div>
+        </div>
+
+        <h2>Program Information</h2>
+
+        <div class="form-row">
+            <div>
+                <label>Program <span class="required">*</span></label>
+                <div class="radio-group">
+                    <label>
+                        <input type="radio" name="program" value="Plus2" onclick="updateSubStream()" required> Plus 2
+                    </label>
+                    <label>
+                        <input type="radio" name="program" value="Bachelors" onclick="updateSubStream()"> Bachelors
+                    </label>
+                </div>
+            </div>
+
+            <div>
+                <label>Sub Stream <span class="required">*</span></label>
+                <select name="sub_stream" id="substream" required>
+                    <option value="">-- Select --</option>
+                </select>
+            </div>
+        </div>
+
+        <h2>Others</h2>
+
+        <div class="form-row">
+            <div>
+                <label>Write your query (if any)</label>
+                <textarea name="query"></textarea>
+            </div>
+        </div>
+
+        <button type="submit" class="submit-btn" id="submitBtn">Apply</button>
+
+        <p class="note">
+            Our team will contact you as per the information given by you.
+        </p>
+
+    </form>
+
+</div>
+
+<script>
+    function updateSubStream() {
+        const substream = document.getElementById("substream");
+        substream.innerHTML = '<option value="">-- Select --</option>';
+
+        const program = document.querySelector('input[name="program"]:checked').value;
+
+        if (program === "Plus2") {
+            substream.innerHTML += `
+            <option value="Science">Science</option>
+            <option value="Management">Management</option>
+            <option value="Law">Law</option>`;
+        } else {
+            substream.innerHTML += `
+            <option value="BSc CSIT">BSc CSIT</option>
+            <option value="BCA">BCA</option>
+            <option value="BBM">BBM</option>
+            <option value="BBS">BBS</option>`;
+        }
+    }
+
+    function lockButton() {
+        const btn = document.getElementById("submitBtn");
+        btn.disabled = true;
+        btn.innerText = "Processing...";
+        return true; 
+    }
+</script>
+{% endblock %}

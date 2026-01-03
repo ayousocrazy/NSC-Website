@@ -25,7 +25,7 @@
 <section class="section_100 section_top">
     <div class="section_1260">
         <div class="card_content">
-            <p><a href="{% url 'home' %}">Home</a> > Faculty</p>
+            <p><a href="{% if plus2 %}{% url 'plus2' %}{% else %}{% url 'home' %}{% endif %}">Home</a> > Faculty</p>
             <h1>Our Team</h1>
         </div>
     </div>

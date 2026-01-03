@@ -1,10 +1,11 @@
 {% extends 'main.html' %}
 {% load static %}
-
 {% block extra_css %}
+<link rel="stylesheet" href="{% static 'styles/admissions.css' %}" />
+
 <style>
     .header_burger-content {
-        top: 64px;                
+        top: 64px;
         height: calc(100% - 64px);
     }
 
@@ -20,5 +21,247 @@
 {% endblock %}
 
 {% block content %}
-Admissions
+
+<section class="section_100 section-top">
+    <div class="section_1260">
+        <p><a href="{% if plus2 %}{% url 'plus2' %}{% else %}{% url 'home' %}{% endif %}">Home</a> > <strong>Admission</strong></p>
+        <h1>Admissions and Scholarships</h1>
+    </div>
+</section>
+
+<section class="admission-process" id="steps">
+    <div class="admission-layout">
+        <div class="admission-title">
+            <h2>Admission Process</h2>
+            <h4>A simple admission process to begin your path as a New Summitian</h4>
+        </div>
+
+        <div class="steps">
+            <div class="step">
+                <span class="step-badge">STEP 1</span>
+                <h3>Confirm Eligibility</h3>
+
+                <div class="step-card">
+                    {% if plus2 %}
+                    <h4>Subject and Academic Requirements</h4>
+                    <p>
+                        Applicants must have successfully completed the SEE (Grade 10) or an equivalent
+                        qualification with the minimum GPA and subject requirements set by NEB and the college.
+                    </p>
+                    <p>
+                        Please refer to the respective program pages
+                        for detailed subject and grade requirements:
+                    </p>
+                    <div class="program-card">
+                        <a href="{% url 'academics' 'science' %}#criteria">Science</a>
+                        <a href="{% url 'academics' 'management' %}#criteria">Management</a>
+                        <a href="{% url 'academics' 'law' %}#criteria">Law</a>
+                    </div>
+
+                    {% else %}
+                    <h4>Subject and Academic Requirements</h4>
+                    <p>
+                        Applicants must have completed +2 / A-Level or an equivalent qualification
+                        with the required subjects and minimum grades as prescribed by Tribhuvan University.
+                    </p>
+                    <p>
+                        Program-wise eligibility criteria are available on the respective pages:
+                    </p>
+                    <div class="program-card">
+                        <a href="{% url 'academics' 'csit' %}#criteria">BSc CSIT</a>
+                        <a href="{% url 'academics' 'bca' %}#criteria">BCA</a>
+                        <a href="{% url 'academics' 'bbm' %}#criteria">BBM</a>
+                        <a href="{% url 'academics' 'bbs' %}#criteria">BBS</a>
+                    </div>
+                    {% endif %}
+                </div>
+
+            </div>
+
+            <div class="step">
+                <span class="step-badge">STEP 2</span>
+                <h3>Prepare Required Documents</h3>
+
+                <div class="step-card">
+                    <p>
+                        After confirming your eligibility prepare these documents:
+                    </p>
+
+                    <ol>
+                        <li>SEE / SLC certificate</li>
+                        <li>Passport-size photos</li>
+                        <li>Citizenship / Birth certificate</li>
+                        {% if not plus2 %}
+                        <li>+2 / PCL mark sheet and transcript</li>
+                        <li>For foreign/A-Level students: Equivalence certificate recognized by TU</li>
+                        <li>Migration certificate</li>
+                        {% endif %}
+                        <li>Character certificate and other documents as required by the college</li>
+                    </ol>
+                </div>
+            </div>
+
+            <div class="step">
+                <span class="step-badge">STEP 3</span>
+                {% if plus2 %}
+                <h3>Get and Fill the Application Form</h3>
+
+                <div class="step-card">
+                    <p><strong>Where: </strong>Forms are available at New Summit College (Shantinagar, New Baneshwor)
+                    </p>
+                    <p>Enter your personal info, SEE grades, choice of stream <br>
+                        Attach required documents <br>
+                        Submit by the given deadline (usually between Ashadh–Shrawan each year) <br>
+                    </p>
+                </div>
+                {% else %}
+                <h3>Entrance Exam Registration & Preparation</h3>
+
+                <div class="step-card">
+                    <p><strong>Where to register? </strong></p>
+                    <p>You can either register online from <br>
+                        <a href="https://iost.tu.edu.np/pages/entrance-248">IOST</a> for BSc CSIT, <a
+                            href="https://entrance.tufohss.edu.np/">FOHSS</a> for BCA, <a
+                            href="https://www.tudoms.org/">FOM</a> for BBM and BBS doesnot require an entrance
+                    </p>
+
+                    <p>OR</p>
+
+                    <p>Come to New Summit College, they will register for you.</p>
+
+                    <p><strong>Where to prepare?</strong></p>
+                    <p>We also have a platform called <a
+                            href="{% if plus2 %}{% url 'plus2' %}{% else %}{% url 'home' %}{% endif %}#learninghammer">Learning
+                            Hammer</a>. From here you can prepare. </p>
+                </div>
+                {% endif %}
+            </div>
+
+            <div class="step">
+                <span class="step-badge">STEP 4</span>
+                {% if plus2 %}
+                <h3>Sit for the College Entrance Test</h3>
+
+                <div class="step-card">
+                    <p>
+                        Mandatory for all +2 streams at NSC
+                    </p>
+                    <p>
+                        Tests generally cover English + Mathematics + General Knowledge + basic stream-related areas
+                    </p>
+                    <p><strong>Where to prepare?</strong></p>
+                    <p>We also have a platform called <a
+                            href="{% if plus2 %}{% url 'plus2' %}{% else %}{% url 'home' %}{% endif %}#learninghammer">Learning
+                            Hammer</a>. From here you can prepare. </p>
+                </div>
+                {% else %}
+                <h3>Submit Admission Application</h3>
+
+                <div class="step-card">
+                    <p>
+                        Get the New Summit College admission form
+                    </p>
+                    <p>Submit the filled form with all documents — academic records, entrance pass result, ID, photos
+                    </p>
+                </div>
+                {% endif %}
+            </div>
+
+            <div class="step">
+                <span class="step-badge">STEP 5</span>
+                <h3>Entrance Test Results & Scholarships</h3>
+                <div class="step-card">
+                    {% if plus2 %}
+                    <p>Results are usually published shortly after the test</p>
+                    <p>Scholarships is based on entrance test and merit list(rank order)</p>
+                    {% else %}
+                    <p>Results are usually published shortly after the test on the official TU website</p>
+                    <p>Scholarship is based on entrance test (rank order) and plus2 GPA</p>
+                    {% endif %}
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<section class="section_1260 section-m-b">
+    <h4 class="section-subtitle">
+        Explore scholarship opportunities that reward excellence and dedication
+    </h4>
+    <h2 class="section-title">
+        Scholarships & Opportunities
+    </h2>
+
+    <h3 class="table-title">Merit Based Scholarship</h3>
+    <div class="scholarship-table">
+        <div class="table-header">
+            <div>GPA</div>
+            <div>Marks in Entrance</div>
+            <div>Scholarship Scheme</div>
+            <div>Number</div>
+        </div>
+
+        <div class="table-row" data-gpa="4.00" data-entrance="85 and above"
+            data-scholarship="All fees except Registration Fee" data-number="All">
+            <div>4.00</div>
+            <div>85 and above</div>
+            <div>All fees except Registration Fee</div>
+            <div>All</div>
+        </div>
+
+        <div class="table-row" data-gpa="3.85 and above" data-entrance="80 and above"
+            data-scholarship="100% on Tuition & Annual Fee" data-number="10">
+            <div>3.85 and above</div>
+            <div>80 and above</div>
+            <div>100% on Tuition & Annual Fee</div>
+            <div>10</div>
+        </div>
+
+        <div class="table-row" data-gpa="3.70 and above" data-entrance="75 and above"
+            data-scholarship="75% on Tuition & Annual Fee" data-number="10">
+            <div>3.70 and above</div>
+            <div>75 and above</div>
+            <div>75% on Tuition & Annual Fee</div>
+            <div>10</div>
+        </div>
+
+        <div class="table-row" data-gpa="3.50 and above" data-entrance="70 and above"
+            data-scholarship="50% on Tuition Fee & 25% on Annual Fee" data-number="20">
+            <div>3.50 and above</div>
+            <div>70 and above</div>
+            <div>50% on Tuition Fee & 25% on Annual Fee</div>
+            <div>20</div>
+        </div>
+
+        <div class="table-row" data-gpa="3.25 and above" data-entrance="60 and above"
+            data-scholarship="50% on Tuition Fee" data-number="20">
+            <div>3.25 and above</div>
+            <div>60 and above</div>
+            <div>50% on Tuition Fee</div>
+            <div>20</div>
+        </div>
+    </div>
+
+    <h3 class="table-title">Need Based Scholarship</h3>
+    <ul class="scholarship-list">
+        <li>TU Topper’s Scholarship</li>
+        <li>Board Topper’s Scholarship</li>
+        <li>District Topper’s Scholarship (Boy & Girl)</li>
+        <li>Martyr’s Family Scholarship</li>
+        <li>School Topper’s Scholarship</li>
+        <li>Extraordinary Skills Scholarship (Sports, Music, Literature etc.)</li>
+        <li>Unprivileged and Remote Area Scholarship</li>
+        <li>NEB Scholarship (as per the rules)</li>
+        <li>Entrance Toppers Scholarship (Boy & Girl)</li>
+    </ul>
+
+</section>
+
+<section class="section_1260 section-m-b centered-section">
+  <p>Still unsure? Fill out the application form and our team will guide you.</p>
+  <a href="{% url 'form' %}" class="application-button">Application Form</a>
+</section>
+
+
 {% endblock %}

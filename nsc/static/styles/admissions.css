@@ -1,0 +1,316 @@
+.section-top {
+    background: linear-gradient(135deg, var(--darkest-red), var(--lightest-red));
+    padding: clamp(2rem, 4vw, 5rem) 0;
+    color: var(--inverse-font);
+}
+
+.section-top h1 {
+    font-size: clamp(2rem, 4vw, 3rem);
+    margin-bottom: clamp(0.5rem, 1vw, 1rem);
+}
+
+.section-top p {
+    font-size: clamp(0.9rem, 1.25vw, 1.5rem);
+    margin-bottom: clamp(0.5rem, 1vw, 1rem);
+}
+
+.section-top a {
+    color: var(--inverse-font);
+}
+
+.section-top a:hover {
+    text-decoration: underline;
+}
+
+.section-top strong {
+    color: var(--lightest-red);
+}
+
+.section-title {
+    color: var(--dark-font);
+    font-size: clamp(1.75rem, calc(1.39rem + 1.7857vw), 3rem);
+    text-align: center;
+    margin-bottom: clamp(1.25rem, 2.5vw, 2rem);
+}
+
+.section-subtitle {
+    color: var(--lightest-font);
+    font-size: clamp(0.75rem, calc(0.607rem + 0.714vw), 1.25rem);
+    text-align: center;
+    text-transform: uppercase;
+    margin-bottom: clamp(0.5rem, calc(0.357rem + 0.714vw), 1rem);
+}
+
+.admission-process {
+    max-width: 1260px;
+    margin: clamp(3rem, 4.5vw, 4.25rem) auto;
+    padding: 0 clamp(1rem, 4vw, 2rem);
+}
+
+.admission-layout {
+    display: flex;
+    align-items: flex-start;
+    gap: clamp(2rem, 6vw, 5rem);
+}
+
+.admission-title {
+    flex: 1;
+}
+
+.admission-title h2 {
+    font-size: clamp(1.75rem, calc(1.39rem + 1.7857vw), 3rem);
+    font-weight: 700;
+    color: var(--dark-font);
+    position: sticky;
+    top: 120px;
+    margin-bottom: clamp(1.25rem, 2.5vw, 2rem);
+}
+
+.admission-title h4 {
+    color: var(--lightest-font);
+    font-size: clamp(0.75rem, calc(0.607rem + 0.714vw), 1.25rem);
+    text-transform: uppercase;
+    margin-bottom: clamp(0.5rem, calc(0.357rem + 0.714vw), 1rem);
+}
+
+.steps {
+    flex: 2;
+    max-width: 950px;
+}
+
+.step {
+    margin-bottom: clamp(2.5rem, 6vw, 4rem);
+}
+
+.step-badge {
+    display: inline-block;
+    padding: clamp(0.25rem, 0.6vw, 0.4rem) clamp(0.6rem, 1.5vw, 0.9rem);
+    font-size: clamp(0.65rem, 1.2vw, 0.75rem);
+    font-weight: 600;
+    border-radius: 999px;
+    background: var(--lightest-red);
+    color: var(--red);
+    margin-bottom: clamp(0.5rem, 1.5vw, 0.75rem);
+}
+
+.step h3 {
+    font-size: clamp(1.25rem, 2.5vw, 2rem);
+    margin-bottom: clamp(0.75rem, 2vw, 1.2rem);
+    color: var(--darkest-red);
+}
+
+.step-card {
+    background: var(--white);
+    border-radius: clamp(0.8rem, 2vw, 1.2rem);
+    padding: clamp(1.2rem, 3vw, 2rem);
+    border: 1px solid #e5e7eb;
+}
+
+.step-card h4 {
+    font-size: clamp(1.1rem, 2vw, 1.25rem);
+    margin-bottom: clamp(0.5rem, 1vw, 0.75rem);
+}
+
+.step-card p,
+.step-card li {
+    font-size: clamp(0.9rem, 1.8vw, 1rem);
+    line-height: 1.5;
+    color: var(--light-font);
+    margin-bottom: clamp(0.5rem, 1vw, 0.75rem);
+}
+
+.step-card a {
+    text-decoration: underline;
+    color: var(--light-font);
+}
+
+.program-card {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+.program-card a {
+    text-decoration: none;
+    background-color: #e0e0e0;
+    color: var(--light-font);
+    padding: 6px 14px;
+    font-size: 14px;
+    border-radius: 999px;
+    white-space: nowrap;
+    transition: background-color 0.2s ease;
+}
+
+.program-card a:hover {
+    background-color: #cfcfcf;
+}
+
+
+.scholarship-table {
+    display: grid;
+    border-radius: 1rem;
+    overflow: hidden;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    margin-bottom: clamp(2.5rem, 4.25vw, 4rem);
+}
+
+.table-header,
+.table-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    text-align: center;
+    padding: 1rem;
+}
+
+.table-header {
+    background: linear-gradient(90deg, var(--darkest-red), var(--red));
+    color: var(--inverse-font);
+    font-weight: 600;
+    font-size: 1rem;
+}
+
+.table-row {
+    background: #f9fafb;
+    border-bottom: 1px solid #e5e7eb;
+    transition: transform 0.2s, background 0.2s;
+}
+
+.table-row:hover {
+    background: #eef2ff;
+    transform: translateY(-2px);
+}
+
+.table-title {
+    font-size: clamp(1.8rem, 2.5vw, 2.5rem);
+    color: var(--red);
+    margin-bottom: clamp(1.25rem, 2.25vw, 1.75rem);
+}
+
+
+.scholarship-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.scholarship-list li {
+    position: relative;
+    padding: 0.75rem 1rem 0.75rem 2.5rem;
+    margin-bottom: 0.5rem;
+    background: #f9fafb;
+    border-left: 5px solid var(--red);
+    border-radius: 0.5rem;
+    transition: background 0.3s, transform 0.3s;
+    font-size: clamp(0.95rem, 1.2vw, 1.1rem);
+}
+
+.scholarship-list li::before {
+    content: '->';
+    position: absolute;
+    left: 0.8rem;
+    color: var(--red);
+    font-size: 1rem;
+}
+
+.scholarship-list li:hover {
+    background: #eef2ff;
+    transform: translateX(3px);
+}
+
+.centered-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+    text-align: center;  
+    padding: 2rem 1rem; 
+}
+
+.centered-section p {
+    font-size: clamp(1rem, 2.5vw, 1.5rem);
+    color: var(--light-font);
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+}
+
+.application-button {
+    display: inline-block;
+    padding: 0.8rem 2rem;
+    font-size: clamp(1rem, 2vw, 1.2rem);
+    background-color: #ccc;
+    color: var(--black);
+    text-decoration: none;
+    border-radius: 12px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.application-button:hover {
+    background-color: #aaa;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+@media (max-width: 768px) {
+    .admission-layout {
+        flex-direction: column;
+    }
+
+    .admission-title h2 {
+        position: static;
+        margin-bottom: clamp(1.5rem, 4vw, 2.5rem);
+    }
+
+    .steps {
+        max-width: 100%;
+    }
+
+    .table-header {
+        display: none;
+    }
+
+    .table-row {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        background: var(--white);
+        padding: 1rem;
+        margin-bottom: 0.8rem;
+        border-radius: 0.8rem;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    }
+
+    .table-row div {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        padding: 0.3rem 0;
+    }
+
+    .table-row div::before {
+        font-weight: 600;
+        color: #4b5563;
+    }
+
+    .table-row div:nth-child(1)::before {
+        content: "GPA:";
+    }
+
+    .table-row div:nth-child(2)::before {
+        content: "Entrance:";
+    }
+
+    .table-row div:nth-child(3)::before {
+        content: "Scholarship:";
+    }
+
+    .table-row div:nth-child(4)::before {
+        content: "Number:";
+    }
+}
+
+@media (max-width: 600px) {
+    .scholarship-list li {
+        padding: 0.6rem 1rem 0.6rem 2rem;
+        font-size: 0.95rem;
+    }
+}

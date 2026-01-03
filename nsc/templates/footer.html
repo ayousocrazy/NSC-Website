@@ -14,10 +14,10 @@
                     <div class="footer-section">
                         <h4>Useful Links</h4>
                         <ul>
-                            <li><a href="{% url 'home' %}">Home</a></li>
-                            <li><a href="{% url 'about' %}">About</a></li>
-                            <li><a href="{% url 'admissions' %}">Admissions</a></li>
-                            <li><a href="{% url 'faculty' %}">Faculty</a></li>
+                            <li><a href="{% if plus2 %}{% url 'plus2' %}{% else %}{% url 'home' %}{% endif %}">Home</a></li>
+                            <li><a href="{% url 'about' %}?level={% if plus2 %}plus2{% endif %}">About</a></li>
+                            <li><a href="{% url 'admissions' %}?level={% if plus2 %}plus2{% endif %}">Admissions</a></li>
+                            <li><a href="{% url 'faculty' %}?level={% if plus2 %}plus2{% endif %}">Faculty</a></li>
                             <li><a href="https://bytes-8.netlify.app/">Journal-BYTES</a></li>
                         </ul>
                     </div>
