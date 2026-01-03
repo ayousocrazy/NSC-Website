@@ -175,3 +175,16 @@ def form(request):
             return redirect(request.path)  # reload the same form page
 
     return render(request, "main/form.html", {"no_footer": True})
+
+from django.http import HttpResponse
+from django.db import connection
+from django.db.utils import OperationalError
+
+def test_db(request):
+    try:
+        with connection.cursor() as cursor:
+            cursor.execute("SELECT 1;")
+            result = cursor.fetchone()
+        return HttpResponse(f"Database connection OK! Result: {result}")
+    except OperationalError as e:
+        return HttpResponse(f"Database connection FAILED! Error: {e}")
