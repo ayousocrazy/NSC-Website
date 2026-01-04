@@ -7,3 +7,5 @@ python-dotenv
 whitenoise
 openpyxl
 portalocker
+cloudinary
+django-cloudinary-storage
