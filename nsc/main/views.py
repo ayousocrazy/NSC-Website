@@ -6,6 +6,9 @@ from openpyxl import Workbook, load_workbook
 from django.conf import settings
 import portalocker 
 from django.contrib import messages
+from django.http import HttpResponse
+from django.db import connection
+from django.db.utils import OperationalError
 
 EXCEL_FILE = os.path.join(settings.BASE_DIR, 'main', 'excel', 'admissions.xlsx')
 
@@ -172,19 +175,32 @@ def form(request):
         except Exception as e:
             print("FORM ERROR:", e)
             messages.error(request, "Submission failed. Please try again.")
-            return redirect(request.path)  # reload the same form page
+            return redirect(request.path)  
 
     return render(request, "main/form.html", {"no_footer": True})
 
-from django.http import HttpResponse
-from django.db import connection
-from django.db.utils import OperationalError
-
-def test_db(request):
+def downloadAdmissionsList(request):
     try:
-        with connection.cursor() as cursor:
-            cursor.execute("SELECT 1;")
-            result = cursor.fetchone()
-        return HttpResponse(f"Database connection OK! Result: {result}")
-    except OperationalError as e:
-        return HttpResponse(f"Database connection FAILED! Error: {e}")
+        with open(EXCEL_FILE, "rb") as file:
+            response = HttpResponse(
+                file.read(),
+                content_type="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+            )
+            response["Content-Disposition"] = 'attachment; filename="AdmissionList.xlsx"'
+            return response
+    except FileNotFoundError:
+        messages.error(request, "Admission file not found.")
+        return redirect("/")
+    except Exception as e:
+        print("DOWNLOAD ERROR:", e)
+        messages.error(request, "Could not download file. Please try again.")
+        return redirect("/")
+
+# def test_db(request):
+#     try:
+#         with connection.cursor() as cursor:
+#             cursor.execute("SELECT 1;")
+#             result = cursor.fetchone()
+#         return HttpResponse(f"Database connection OK! Result: {result}")
+#     except OperationalError as e:
+#         return HttpResponse(f"Database connection FAILED! Error: {e}")

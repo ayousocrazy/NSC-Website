@@ -11,5 +11,6 @@ urlpatterns = [
     path('plus2/', views.homePlus2, name="plus2"),
     path('form/', views.form, name="form"),
 
-    path('test-db/', views.test_db),
+    # path('test-db/', views.test_db),
+    path('download-admissions-list/', views.downloadAdmissionsList, name="download-admissions-list")
 ]
